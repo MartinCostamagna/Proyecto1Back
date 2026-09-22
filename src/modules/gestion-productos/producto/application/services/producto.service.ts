@@ -27,6 +27,8 @@ import { ProductoRelatedEntitiesValidator } from '../../infraestructure/validato
 import { ProductoUniquenessValidator } from '../../infraestructure/validators/producto-uniqueness.validator.ts';
 import { UsuarioValidator } from 'src/modules/common/utils/validation/usuario-validator';
 import { ProductoDeletePolicy } from '../policies/producto-delete.policy';
+
+import { generarDenominacionProducto } from '../../utils/producto.util';
 @Injectable()
 export class ProductoService {
   private readonly logger = new Logger(ProductoService.name);
@@ -61,7 +63,7 @@ export class ProductoService {
     );
 
     // Orquestar todas las validaciones
-    const { marca, linea, usuario } =
+    const { marca, linea, presentacion, usuario } =
       await this.validarYPrepararCreacion(dto);
 
 
@@ -72,6 +74,7 @@ export class ProductoService {
       marca,
 
       usuario,
+      presentacion ?? null,
     );
 
     return MessageFrontUtils.createSimple(
@@ -84,7 +87,7 @@ export class ProductoService {
   async update(id: number, dto: UpdateProductoDto) {
     this.logger.log(`Actualizandox  ${this.ENTITY_NAME} con ID: ${id}`);
 
-    const { marca, linea, usuario } =
+    const { marca, linea, presentacion, usuario } =
       await this.validarYPrepararActualizacion(id, dto);
 
     const entity = await this.repository.update(
@@ -94,6 +97,7 @@ export class ProductoService {
       marca,
 
       usuario,
+      presentacion ?? null,
     );
 
     return MessageFrontUtils.createSimple(
@@ -314,7 +318,25 @@ export class ProductoService {
    * @private
    */
   private async validarYPrepararCreacion(dto: CreateProductoDto) {
-    // Validar datos  (Domain - sin DB)
+    // 1 Validar entidades relacionadas existen (Infrastructure - DB)
+    // y obtenerlas primero para poder autogenerar la denominación (CR-005)
+    const { marca, linea, presentacion } =
+      await this.relatedEntitiesValidator.validarYObtenerEntidadesRelacionadas(
+        dto.marcaId,
+        dto.lineaId,
+        dto.presentacionId,
+      );
+
+    // CR-005: si la denominación viene vacía/ausente, se autogenera
+    // a partir de Marca + Línea + Presentación
+    if (!dto.denominacion?.trim()) {
+      dto.denominacion = generarDenominacionProducto(
+        marca.denominacion,
+        linea.denominacion,
+        presentacion ? presentacion.denominacion : null,
+      );
+    }
+
     this.intrinsicValidationService.validarDatosBasicos({
       denominacion: dto.denominacion,
       marcaId: dto.marcaId,
@@ -331,13 +353,6 @@ export class ProductoService {
         0,
       );
     }
-    // 3 Validar entidades relacionadas existen (Infrastructure - DB)
-    const { marca, linea, } =
-      await this.relatedEntitiesValidator.validarYObtenerEntidadesRelacionadas(
-        dto.marcaId,
-        dto.lineaId,
-
-      );
 
     //  Validar reglas de negocio sobre entidades (Domain)
     this.validationService.validarEntidadesRelacionadas(
@@ -346,13 +361,12 @@ export class ProductoService {
 
     );
 
-
     //  Validar usuario existe (Infrastructure)
     const usuario = await this.usuarioValidator.validarUsuarioExiste(
       dto.usuarioCreatedId,
     );
 
-    return { marca, linea, usuario };
+    return { marca, linea, presentacion, usuario };
   }
   /**
    * Orquesta todas las validaciones necesarias para actualizar un producto
@@ -376,6 +390,29 @@ export class ProductoService {
       throw new InternalServerErrorException('Producto en estado inválido');
     }
 
+    // Validar entidades relacionadas (Infrastructure - DB)
+    // y obtenerlas primero para poder autogenerar la denominación (CR-005)
+    const { marca, linea, presentacion } =
+      await this.relatedEntitiesValidator.validarYObtenerEntidadesRelacionadas(
+        dto.marcaId ?? productoActual.marcaId,
+        dto.lineaId ?? productoActual.lineaId,
+        dto.presentacionId ?? productoActual.presentacionId,
+      );
+
+    // CR-005: si la denominación viene explícitamente vacía, se autogenera
+    // a partir de Marca + Línea + Presentación.
+    // Si viene ausente (undefined) se mantiene el valor existente.
+    if (
+      typeof dto.denominacion === 'string' &&
+      !dto.denominacion.trim()
+    ) {
+      dto.denominacion = generarDenominacionProducto(
+        marca.denominacion,
+        linea.denominacion,
+        presentacion ? presentacion.denominacion : null,
+      );
+    }
+
     //  Validar datos intrínsecos
     this.intrinsicValidationService.validarDatosBasicos({
       denominacion: dto.denominacion ?? productoActual.denominacion,
@@ -393,14 +430,6 @@ export class ProductoService {
       );
     }
 
-    // Validar entidades relacionadas
-    const { marca, linea, } =
-      await this.relatedEntitiesValidator.validarYObtenerEntidadesRelacionadas(
-        dto.marcaId ?? productoActual.marcaId,
-        dto.lineaId ?? productoActual.lineaId,
-
-      );
-
     //  Validar reglas de negocio
     this.validationService.validarEntidadesRelacionadas(
       marca,
@@ -413,7 +442,7 @@ export class ProductoService {
       dto.usuarioUpdatedId,
     );
 
-    return { marca, linea, usuario };
+    return { marca, linea, presentacion, usuario };
   }
 
 

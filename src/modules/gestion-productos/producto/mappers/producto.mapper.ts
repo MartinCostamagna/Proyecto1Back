@@ -44,6 +44,13 @@ export class ProductoMapper {
       sistema: entity.sistema,
       codigoReferencia: entity.codigoReferencia ?? '',
 
+      presentacion: entity.presentacion
+        ? {
+            id: entity.presentacion.id,
+            denominacion: entity.presentacion.denominacion,
+          }
+        : undefined,
+
     };
   }
 
@@ -98,8 +105,13 @@ export class ProductoMapper {
       sistema: entity.sistema,
       codigoReferencia: entity.codigoReferencia ?? '',
 
-    
-      
+presentacion: entity.presentacion
+        ? {
+            id: entity.presentacion.id,
+            denominacion: entity.presentacion.denominacion,
+          }
+        : undefined,
+
     };
   }
 
