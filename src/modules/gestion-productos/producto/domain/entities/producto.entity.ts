@@ -7,6 +7,8 @@ import {
   ManyToOne,
   Index,
   JoinColumn,
+  BeforeInsert,
+  BeforeUpdate,
 } from 'typeorm';
 import { Linea } from '../../../linea/domain/entities/linea.entity';
 import { Marca } from '../../../marca/domain/entities/marca.entity';
@@ -19,6 +21,7 @@ import { CantidadColumn } from 'src/modules/common/decorators/cantidad-column.de
 import { PorcentajeColumn } from 'src/modules/common/decorators/porcentaje-column.decorator';
 import { Proveedor } from 'src/modules/organizacion/proveedor/domain/entities/proveedor.entity';
 import { Presentacion } from '../../../presentacion/domain/entities/presentacion.entity';
+import { BadRequestException } from '@nestjs/common';
 
 @Entity('producto')
 export class Producto {
@@ -181,4 +184,43 @@ export class Producto {
 
   @Column({ type: 'text', nullable: true })
   codigoReferencia?: string | null;
+
+  //CR-001: VALIDACIONES DEL DOMINIO
+  @BeforeInsert()
+  @BeforeUpdate()
+  validarInvariantes(): void {
+    // 1. Validar montos no negativos
+    if (this.costo !== undefined && this.costo !== null && this.costo < 0) {
+      throw new BadRequestException('El costo del producto no puede ser un valor negativo.');
+    }
+
+    if (this.costoDolar !== undefined && this.costoDolar !== null && this.costoDolar < 0) {
+      throw new BadRequestException('El costo en dólares no puede ser un valor negativo.');
+    }
+
+    if (this.precio !== undefined && this.precio !== null && this.precio < 0) {
+      throw new BadRequestException('El precio de venta no puede ser un valor negativo.');
+    }
+
+    if (this.porcentaje !== undefined && this.porcentaje !== null && this.porcentaje < 0) {
+      throw new BadRequestException('El porcentaje de margen no puede ser un valor negativo.');
+    }
+
+    // 2. Validar stocks no negativos
+    if (this.stock !== undefined && this.stock !== null && this.stock < 0) {
+      throw new BadRequestException('El stock actual no puede ser un valor negativo.');
+    }
+
+    if (this.stockMinimo !== undefined && this.stockMinimo !== null && this.stockMinimo < 0) {
+      throw new BadRequestException('El stock mínimo no puede ser un valor negativo.');
+    }
+
+    // 3. Validar cantidad por pack
+    if (this.utilizaPack && (this.cantidadPorPack === null || this.cantidadPorPack === undefined || this.cantidadPorPack < 1)) {
+      throw new BadRequestException('Si el producto utiliza pack, la cantidad por pack debe ser de al menos 1.');
+    }
+
+    //4. Validar margen de ganancia
+    
+  }
 }

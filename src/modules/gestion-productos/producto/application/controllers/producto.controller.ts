@@ -11,6 +11,7 @@ import {
   Query,
   UsePipes,
   UseGuards,
+  ValidationPipe,
 } from '@nestjs/common';
 
 import { CreateProductoDto } from '../../dto/create-producto.dto';
@@ -46,6 +47,7 @@ export class ProductoController {
   @Roles('Root', 'Administrador', 'Empleado', 'Repartidor', 'Repositor')
   @UsePipes(NormalizeDenominacionPipe)
   @UsePipes(NormalizeCodigoProveedorPipe)
+  @UsePipes(new ValidationPipe({transform: true, whitelist: true}))
   create(@Body() createDto: CreateProductoDto) {
     this.logger.log(`Creando un nuevo ${this.ENTITY_NAME}...`);
     return this.service.create(createDto);
@@ -159,6 +161,7 @@ export class ProductoController {
   @Roles('Root', 'Administrador', 'Empleado')
   @UsePipes(NormalizeDenominacionPipe)
   @UsePipes(NormalizeCodigoProveedorPipe)
+  @UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
   update(
     @Param('id', ParseIntPipe) id: number,
     @Body() updateDto: UpdateProductoDto,
