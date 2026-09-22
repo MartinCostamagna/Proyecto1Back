@@ -18,6 +18,7 @@ import { MonetarioColumn } from 'src/modules/common/decorators/monetario-column.
 import { CantidadColumn } from 'src/modules/common/decorators/cantidad-column.decorator';
 import { PorcentajeColumn } from 'src/modules/common/decorators/porcentaje-column.decorator';
 import { Proveedor } from 'src/modules/organizacion/proveedor/domain/entities/proveedor.entity';
+import { Presentacion } from '../../../presentacion/domain/entities/presentacion.entity';
 
 @Entity('producto')
 export class Producto {
@@ -148,6 +149,14 @@ export class Producto {
 
   @Column({ type: 'int', nullable: true })
   marcaId?: number;
+
+
+  @ManyToOne(() => Presentacion, (presentacion) => presentacion.productos)
+  @JoinColumn({ name: 'presentacion_id' })
+  presentacion?: Presentacion | null;
+
+  @Column({ type: 'int', nullable: true })
+  presentacionId?: number | null;
 
 
   @Column({ default: false })

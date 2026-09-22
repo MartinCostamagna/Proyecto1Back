@@ -98,6 +98,15 @@ export class ProductoDto {
   @Type(() => ReferenciaDto)
   marca?: ReferenciaDto;
 
+  @ApiProperty({
+    type: () => ReferenciaDto,
+    description: 'Presentación asociada al producto (si tiene)',
+    required: false,
+  })
+  @ValidateNested()
+  @Type(() => ReferenciaDto)
+  presentacion?: ReferenciaDto;
+
 
   @ApiProperty({
     type: () => ReferenciaDto,
