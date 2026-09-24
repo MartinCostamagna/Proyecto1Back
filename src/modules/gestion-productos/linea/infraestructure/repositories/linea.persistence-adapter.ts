@@ -43,6 +43,7 @@ export class LineaPersistenceAdapter
       // Creamos la entidad sin sublíneas
       const nuevaEntity = repo.create({
         denominacion: data.denominacion,
+        superlineaId: data.superlineaId,
         utilizaStockMinimo: data.utilizaStockMinimo,
         stockMinimo: data.stockMinimo,
         usuarioCreatedId: data.usuarioCreatedId,
@@ -78,6 +79,7 @@ export class LineaPersistenceAdapter
 
     // Actualizar datos simples
     entity.denominacion = data.denominacion ?? entity.denominacion;
+    entity.superlineaId = data.superlineaId ?? entity.superlineaId;
     entity.utilizaStockMinimo = data.utilizaStockMinimo;
     entity.stockMinimo = data.stockMinimo ?? 0;
     entity.usuarioCreatedId = data.usuarioCreatedId;
@@ -228,6 +230,19 @@ export class LineaPersistenceAdapter
       throw new DatabaseConnectionException(
         'Error al conectar con la base de datos.',
       );
+    }
+  }
+
+  async existsLineasActivasBySuperlinea(superlineaId: number): Promise<boolean> {
+    try {
+      const count = await this.repository
+        .createQueryBuilder('linea')
+        .where('linea.superlineaId = :superlineaId', { superlineaId })
+        .andWhere('linea.deletedAt IS NULL')
+        .getCount();
+      return count > 0;
+    } catch (error) {
+      handleDatabaseError(this.logger, 'existsLineasActivasBySuperlinea', error);
     }
   }
 

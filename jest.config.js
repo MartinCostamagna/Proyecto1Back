@@ -63,6 +63,42 @@ module.exports = {
         functions: 80,
         lines: 80,
       },
+      'src/modules/gestion-productos/superlinea/application/**/*.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      'src/modules/gestion-productos/superlinea/domain/services/**/*.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      'src/modules/gestion-productos/superlinea/dto/create-superlinea.dto.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      'src/modules/gestion-productos/superlinea/dto/update-superlinea.dto.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      'src/modules/gestion-productos/superlinea/mappers/superlinea.mapper.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
+      'src/modules/gestion-productos/linea/application/services/linea.service.ts': {
+        statements: 80,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+      },
     },
     moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',

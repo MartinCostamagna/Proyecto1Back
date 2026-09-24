@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Linea } from 'src/modules/gestion-productos/linea/domain/entities/linea.entity';
+import { Superlinea } from 'src/modules/gestion-productos/superlinea/domain/entities/superlinea.entity';
 import { Marca } from 'src/modules/gestion-productos/marca/domain/entities/marca.entity';
 import { Usuario } from 'src/modules/gestion-usuario/usuario/domain/entities/usuario.entity';
 import { Proveedor } from 'src/modules/organizacion/proveedor/domain/entities/proveedor.entity';
@@ -24,8 +25,51 @@ export class SeedFamiliaProductoService {
     @InjectRepository(Usuario)
     private readonly usuarioRepository: Repository<Usuario>,
 
+    @InjectRepository(Superlinea)
+    private readonly superlineaRepository: Repository<Superlinea>,
+
 
   ) {}
+
+async seedSuperlineas() {
+    const entryData = [
+      { denominacion: 'GENERAL', sistema: 0, usuarioCreatedId: 1 },
+      { denominacion: 'ALIMENTOS', sistema: 0, usuarioCreatedId: 1 },
+      { denominacion: 'BEBIDAS', sistema: 0, usuarioCreatedId: 1 },
+      { denominacion: 'LIMPIEZA', sistema: 0, usuarioCreatedId: 1 },
+      { denominacion: 'HIGIENE', sistema: 0, usuarioCreatedId: 1 },
+    ];
+
+    for (const data of entryData) {
+      const exists = await this.superlineaRepository.findOneBy({
+        denominacion: data.denominacion.toUpperCase(),
+      });
+
+      if (!exists) {
+        const usuarioCreated = await this.usuarioRepository.findOneBy({
+          id: data.usuarioCreatedId,
+        });
+
+        if (!usuarioCreated) {
+          console.log(
+            `⚠️ No se encontró el usuario "${data.usuarioCreatedId}".`,
+          );
+          continue;
+        }
+
+        const superlinea = this.superlineaRepository.create({
+          denominacion: data.denominacion.toUpperCase(),
+          sistema: data.sistema,
+          usuarioCreatedId: usuarioCreated.id,
+        } as DeepPartial<Superlinea>);
+
+        await this.superlineaRepository.save(superlinea);
+        console.log(`✅ Superlinea "${data.denominacion}" creada.`);
+      } else {
+        console.log(`⚠️ Superlinea "${data.denominacion}" ya existe.`);
+      }
+    }
+  }
 
 
   async seedLineas() {
@@ -93,10 +137,22 @@ export class SeedFamiliaProductoService {
           continue; // Evita crear la línea sin superlínea
         }
 
+        const superlineaGeneral = await this.superlineaRepository.findOneBy({
+          denominacion: 'GENERAL',
+        });
+
+        if (!superlineaGeneral) {
+          console.log(
+            '⚠️ No se encontró la superlínea "GENERAL". Ejecutá primero seedSuperlineas().',
+          );
+          continue; // Evita crear la línea sin superlínea
+        }
+
         const linea = this.lineaRepository.create({
           denominacion: data.denominacion.toUpperCase(),
           sistema: data.sistema,
 
+          superlineaId: superlineaGeneral.id,
           usuarioCreatedId: usuarioCreated.id,
         } as DeepPartial<Linea>); 
 
@@ -152,8 +208,8 @@ export class SeedFamiliaProductoService {
   async runAllSeeds() {
     console.log('🚀 Iniciando todos los seeds...');
 
-
-   await  this.seedLineas();
+    await this.seedSuperlineas();
+    await this.seedLineas();
     await this.seedMarcas();
 
     console.log('✅ Todos los seeds completados.');
