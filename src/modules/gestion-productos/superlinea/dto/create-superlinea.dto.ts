@@ -1,40 +1,27 @@
 import { Transform } from 'class-transformer';
 import {
-  IsString,
-  IsNotEmpty,
-  MaxLength,
-  Matches,
-  IsOptional,
   IsInt,
-  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Matches,
+  MaxLength,
 } from 'class-validator';
-
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateLineaDto {
-  @Transform(({ value }) => value.trim().toLowerCase())
-  @IsString({ message: 'La denominación debe ser una cadena de texto.' }) // Valida que sea string
-  @IsNotEmpty({ message: 'La denominación no puede estar vacía.' }) // Valida que no esté vacía
-  @MaxLength(255, { message: 'La denominación no puede estar vacía.' })
+export class CreateSuperlineaDto {
+  @Transform(({ value }) => value.trim().toUpperCase())
+  @IsString({ message: 'La denominación debe ser una cadena de texto.' })
+  @IsNotEmpty({ message: 'La denominación no puede estar vacía.' })
+  @MaxLength(255, { message: 'La denominación no puede superar 255 caracteres.' })
   @Matches(/^[A-Za-z0-9 áéíóúÁÉÍÓÚñÑ]+$/, {
     message: 'La denominación solo puede contener letras, números y espacios.',
   })
   denominacion: string;
 
   @IsOptional()
-  @IsInt()
-  stockMinimo?: number;
-
-  @IsBoolean()
-  utilizaStockMinimo: boolean;
-
-  @IsOptional()
   @IsString()
   observacion?: string;
-
-  @IsNotEmpty({ message: 'La superlinea es obligatoria.' })
-  @IsInt({ message: 'La superlinea debe ser un número entero.' })
-  superlineaId: number;
 
   createdAt?: Date;
 

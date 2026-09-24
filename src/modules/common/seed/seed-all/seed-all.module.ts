@@ -5,6 +5,7 @@ import { SeedOrganizacionService } from '../seed-organizacion/seed-organizacion.
 import { SeedFamiliaProductoService } from '../seedFamiliaProducto/seed-familia-producto.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Linea } from 'src/modules/gestion-productos/linea/domain/entities/linea.entity';
+import { Superlinea } from 'src/modules/gestion-productos/superlinea/domain/entities/superlinea.entity';
 import { Marca } from 'src/modules/gestion-productos/marca/domain/entities/marca.entity';
 import { Producto } from 'src/modules/gestion-productos/producto/domain/entities/producto.entity';
 import { Empresa } from 'src/modules/organizacion/empresa/domain/entities/empresa.entity';
@@ -29,6 +30,7 @@ import { AlicuotaIva } from 'src/modules/gutil/alicuota-iva/domain/entities/alic
       Localidad, 
 
       Linea,
+      Superlinea,
       Marca,
       Producto,
       Empresa,
