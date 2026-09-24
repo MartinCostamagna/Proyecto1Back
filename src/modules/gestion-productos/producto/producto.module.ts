@@ -1,4 +1,5 @@
 import { forwardRef, Module } from '@nestjs/common';
+import { HistorialPrecio } from './domain/entities/historial-precio.entity';
 import { ProductoController } from './application/controllers/producto.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { NormalizeDenominacionPipe } from 'src/modules/common/pipes/normalize-denominations.pipe';
@@ -24,7 +25,7 @@ import { ProductoDeletePolicy } from './application/policies/producto-delete.pol
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([Producto]),
+    TypeOrmModule.forFeature([Producto, HistorialPrecio]),
     CommonModule,
     forwardRef(() => LineaModule),
     forwardRef(() => MarcaModule),
@@ -32,7 +33,7 @@ import { ProductoDeletePolicy } from './application/policies/producto-delete.pol
     ProveedorModule,
     UsuarioModule,
   ],
-
+  
   controllers: [ProductoController],
   
   providers: [

@@ -5,6 +5,7 @@ import {
   InternalServerErrorException,
   Logger,
   NotFoundException,
+  BadRequestException,
 } from '@nestjs/common';
 import { IUnitOfWork } from 'src/modules/common/unit-of-work/iunit-of-work.';
 import { ProveedorService } from 'src/modules/organizacion/proveedor/application/services/proveedor.service';
@@ -27,6 +28,9 @@ import { ProductoRelatedEntitiesValidator } from '../../infraestructure/validato
 import { ProductoUniquenessValidator } from '../../infraestructure/validators/producto-uniqueness.validator.ts';
 import { UsuarioValidator } from 'src/modules/common/utils/validation/usuario-validator';
 import { ProductoDeletePolicy } from '../policies/producto-delete.policy';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { HistorialPrecio } from '../../domain/entities/historial-precio.entity';
 
 import { generarDenominacionProducto } from '../../utils/producto.util';
 @Injectable()
@@ -35,7 +39,10 @@ export class ProductoService {
   constructor(
     @Inject('IProductoRepository')
     private readonly repository: IProductoRepository,
+    @InjectRepository(HistorialPrecio)
+    private readonly historialPrecioRepository: Repository<HistorialPrecio>,
     private readonly lineaService: LineaService,
+    
 
     @Inject(forwardRef(() => MarcaService))
     private readonly marcaService: MarcaService,
@@ -85,7 +92,40 @@ export class ProductoService {
   }
 
   async update(id: number, dto: UpdateProductoDto) {
-    this.logger.log(`Actualizandox  ${this.ENTITY_NAME} con ID: ${id}`);
+    this.logger.log(`Actualizando ${this.ENTITY_NAME} con ID: ${id}`);
+
+    const productoActual = await this.findEntityById(id);
+    const precioAnterior = productoActual.precio || 0;
+
+    const nuevoCosto = dto.costo !== undefined ? dto.costo : (productoActual.costo || 0);
+    const nuevoPorcentaje = dto.porcentaje !== undefined ? dto.porcentaje : (productoActual.porcentaje || 0);
+    
+    // El precio se calcula a partir del costo aplicando el margen de ganancia (CR-007)
+    const precioNuevo = dto.precio !== undefined ? dto.precio : (nuevoCosto + (nuevoCosto * (nuevoPorcentaje / 100)));
+
+    //  CR-007: Validar que el precio resultante sea mayor a 0
+    if (precioNuevo <= 0) {
+      throw new BadRequestException('El precio resultante debe ser estrictamente mayor a 0.');
+    }
+
+    //  CR-007: Generar el historial si se detecta que el precio varió
+    if (precioAnterior !== precioNuevo) {
+      if (!dto.motivo || dto.motivo.trim() === '') {
+        throw new BadRequestException('Debe especificar un motivo obligatorio para el cambio de precio.');
+      }
+
+      const historial = this.historialPrecioRepository.create({
+        precioAnterior: precioAnterior,
+        precioNuevo: precioNuevo,
+        motivo: dto.motivo,
+        producto: productoActual,
+      });
+      
+      await this.historialPrecioRepository.save(historial);
+    }
+
+    // Aseguramos que el DTO lleve el precio definitivo y validado a la capa de persistencia
+    dto.precio = precioNuevo;
 
     const { marca, linea, presentacion, usuario } =
       await this.validarYPrepararActualizacion(id, dto);
@@ -95,7 +135,6 @@ export class ProductoService {
       dto,
       linea,
       marca,
-
       usuario,
       presentacion ?? null,
     );

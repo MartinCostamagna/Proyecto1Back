@@ -119,6 +119,10 @@ export class CreateProductoDto {
   @Min(0, { message: 'El precio no puede ser negativo.' })
   precio: number;
 
+  @IsOptional()
+  @IsString({ message: 'El motivo debe ser texto.' })
+  motivo?: string;
+
   createdAt?: Date;
 
   @IsEnum(AlicuotaIva, {

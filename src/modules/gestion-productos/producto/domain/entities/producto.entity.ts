@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  OneToMany,
   Index,
   JoinColumn,
   BeforeInsert,
@@ -22,6 +23,7 @@ import { PorcentajeColumn } from 'src/modules/common/decorators/porcentaje-colum
 import { Proveedor } from 'src/modules/organizacion/proveedor/domain/entities/proveedor.entity';
 import { Presentacion } from '../../../presentacion/domain/entities/presentacion.entity';
 import { BadRequestException } from '@nestjs/common';
+import { HistorialPrecio } from './historial-precio.entity';
 
 @Entity('producto')
 export class Producto {
@@ -185,6 +187,10 @@ export class Producto {
   @Column({ type: 'text', nullable: true })
   codigoReferencia?: string | null;
 
+  // ========== HISTORIAL DE PRECIOS (CR-007) ==========
+  @OneToMany(() => HistorialPrecio, (historial) => historial.producto, { cascade: true })
+  historialPrecios: HistorialPrecio[];
+
   //CR-001: VALIDACIONES DEL DOMINIO
   @BeforeInsert()
   @BeforeUpdate()
@@ -198,8 +204,9 @@ export class Producto {
       throw new BadRequestException('El costo en dólares no puede ser un valor negativo.');
     }
 
-    if (this.precio !== undefined && this.precio !== null && this.precio < 0) {
-      throw new BadRequestException('El precio de venta no puede ser un valor negativo.');
+    // CR-007: Validar que el precio de venta sea mayor a 0
+    if (this.precio !== undefined && this.precio !== null && this.precio <= 0) {
+      throw new BadRequestException('El precio de venta debe ser mayor a 0.');
     }
 
     if (this.porcentaje !== undefined && this.porcentaje !== null && this.porcentaje < 0) {
