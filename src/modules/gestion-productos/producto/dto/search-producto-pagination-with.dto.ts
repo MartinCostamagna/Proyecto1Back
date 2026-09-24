@@ -54,6 +54,11 @@ export class SearchProductoPaginationWithDto {
   @IsOptional()
   @Type(() => Number)
   @IsInt()
+  superlineaId: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsInt()
   proveedorId: number; 
 
   @IsOptional()

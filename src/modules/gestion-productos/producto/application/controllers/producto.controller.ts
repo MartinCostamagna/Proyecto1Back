@@ -82,6 +82,21 @@ export class ProductoController {
     return this.service.findAllForLineas(denominacion);
   }
 
+  @Get('find-all-for-superlineas/select')
+  @Roles(
+    'Root',
+    'Administrador',
+    'Empleado',
+    'Repartidor',
+    'Repositor',
+    'Vendedor',
+  )
+  @UsePipes(NormalizeDenominacionSearchPipe)
+  async findAllSuperlineasFor(@Query() dto: DenominacionBusquedaDto) {
+    const { denominacion = '' } = dto;
+    return this.service.findAllForSuperlineas(denominacion);
+  }
+
   @Get('search-by-rapido')
   @Roles(
     'Root',
@@ -115,6 +130,7 @@ export class ProductoController {
       codigoReferencia,
       marcaId,
       lineaId,
+      superlineaId,
       proveedorId,
       conStock,
       skip,
@@ -127,6 +143,7 @@ export class ProductoController {
       codigoReferencia,
       marcaId,
       lineaId,
+      superlineaId,
       proveedorId,
       conStock,
       skip,

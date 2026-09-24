@@ -3,6 +3,7 @@ import { InternalServerErrorException, NotFoundException } from '@nestjs/common'
 import { ProductoService } from './producto.service';
 import { LineaService } from 'src/modules/gestion-productos/linea/application/services/linea.service';
 import { MarcaService } from 'src/modules/gestion-productos/marca/application/services/marca.service';
+import { SuperlineaService } from 'src/modules/gestion-productos/superlinea/application/services/superlinea.service';
 import { ProveedorService } from 'src/modules/organizacion/proveedor/application/services/proveedor.service';
 import { UsuarioService } from 'src/modules/gestion-usuario/usuario/application/services/usuario.service';
 import { ProductoIntrinsicValidationService } from '../../domain/services/producto-intrinsic-validation.service.ts';
@@ -46,6 +47,7 @@ describe('ProductoService', () => {
   let repository: jest.Mocked<any>;
   let lineaService: jest.Mocked<LineaService>;
   let marcaService: jest.Mocked<MarcaService>;
+  let superlineaService: jest.Mocked<SuperlineaService>;
   let usuarioService: jest.Mocked<UsuarioService>;
   let relatedEntitiesValidator: jest.Mocked<ProductoRelatedEntitiesValidator>;
   let uniquenessValidator: jest.Mocked<ProductoUniquenessValidator>;
@@ -76,6 +78,10 @@ describe('ProductoService', () => {
 
     marcaService = {
       findEntityById: jest.fn(),
+      findAllFor: jest.fn(),
+    } as any;
+
+    superlineaService = {
       findAllFor: jest.fn(),
     } as any;
 
@@ -110,6 +116,7 @@ describe('ProductoService', () => {
         { provide: 'IProductoRepository', useValue: repository },
         { provide: LineaService, useValue: lineaService },
         { provide: MarcaService, useValue: marcaService },
+        { provide: SuperlineaService, useValue: superlineaService },
         { provide: ProveedorService, useValue: {} },
         { provide: UsuarioService, useValue: usuarioService },
         { provide: ProductoIntrinsicValidationService, useValue: intrinsicValidationService },
@@ -312,9 +319,9 @@ describe('ProductoService', () => {
     it('findBy debería mapear resultados a toBusquedaDto', async () => {
       repository.findBy.mockResolvedValue({ data: [{ ...buildProducto() }], total: 5 });
 
-      const result = await service.findBy('COCA', '', false, '', 0, 0, 0, false, 0, 10);
+      const result = await service.findBy('COCA', '', false, '', 0, 0, 0, 0, false, 0, 10);
 
-      expect(repository.findBy).toHaveBeenCalledWith('COCA', '', false, '', 0, 0, 0, false, 0, 10);
+      expect(repository.findBy).toHaveBeenCalledWith('COCA', '', false, '', 0, 0, 0, 0, false, 0, 10);
       expect(result.data.length).toBe(1);
       expect(result.total).toBe(5);
     });
@@ -413,6 +420,12 @@ describe('ProductoService', () => {
       marcaService.findAllFor.mockResolvedValue({ data: [], total: 0 });
 
       await expect(service.findAllForMarcas('CO')).resolves.toEqual({ data: [], total: 0 });
+    });
+
+    it('findAllForSuperlineas debería delegar en superlineaService', async () => {
+      superlineaService.findAllFor.mockResolvedValue({ data: [], total: 0 });
+
+      await expect(service.findAllForSuperlineas('ALIMENTOS')).resolves.toEqual({ data: [], total: 0 });
     });
 
     it('existsProductosActivosByMarca debería delegar en el repositorio', async () => {

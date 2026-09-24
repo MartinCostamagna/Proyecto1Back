@@ -1,9 +1,35 @@
 import {
   normalizarParteDenominacion,
   generarDenominacionProducto,
+  parsearTokensBusqueda,
 } from './producto.util';
 
 describe('producto.util', () => {
+  describe('parsearTokensBusqueda', () => {
+    it('debería devolver array vacío si es null, undefined o vacío', () => {
+      expect(parsearTokensBusqueda(null)).toEqual([]);
+      expect(parsearTokensBusqueda(undefined)).toEqual([]);
+      expect(parsearTokensBusqueda('')).toEqual([]);
+    });
+
+    it('debería separar por espacios y normalizar a mayúsculas', () => {
+      expect(parsearTokensBusqueda('COCA 500')).toEqual(['COCA', '500']);
+      expect(parsearTokensBusqueda('coca cola gaseosa 500ml')).toEqual([
+        'COCA',
+        'COLA',
+        'GASEOSA',
+        '500ML',
+      ]);
+    });
+
+    it('debería colapsar espacios múltiples y recortar bordes', () => {
+      expect(parsearTokensBusqueda('   COCA   500  ')).toEqual(['COCA', '500']);
+    });
+
+    it('debería devolver array vacío si solo hay espacios', () => {
+      expect(parsearTokensBusqueda('    ')).toEqual([]);
+    });
+  });
   describe('normalizarParteDenominacion', () => {
     it('debería devolver cadena vacía si es null o undefined', () => {
       expect(normalizarParteDenominacion(null)).toBe('');
