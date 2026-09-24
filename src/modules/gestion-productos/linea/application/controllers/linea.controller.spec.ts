@@ -5,6 +5,7 @@ import { LineaController } from './linea.controller';
 import { LineaService } from '../services/linea.service';
 import { UsuarioService } from 'src/modules/gestion-usuario/usuario/application/services/usuario.service';
 import { PoliticaEliminacionLinea } from '../../domain/services/politica-eliminacion-linea.service';
+import { SuperlineaService } from '../../../superlinea/application/services/superlinea.service';
 
 describe('LineaController', () => {
   let controller: LineaController;
@@ -17,6 +18,7 @@ describe('LineaController', () => {
         { provide: 'ILineaRepository', useValue: {} },
         { provide: PoliticaEliminacionLinea, useValue: {} },
         { provide: UsuarioService, useValue: {} },
+        { provide: SuperlineaService, useValue: {} },
         { provide: JwtService, useValue: {} },
         { provide: ConfigService, useValue: { get: jest.fn() } },
         { provide: 'IUsuarioRepository', useValue: {} },

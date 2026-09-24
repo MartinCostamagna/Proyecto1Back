@@ -15,6 +15,7 @@ import { CreateProductoDto } from '../../dto/create-producto.dto';
 import { UpdatePrecioDto } from '../../dto/update-precio.dto';
 import { UpdateProductoDto } from '../../dto/update-producto.dto';
 import { ProductoMapper } from '../../mappers/producto.mapper';
+import { parsearTokensBusqueda } from '../../utils/producto.util';
 
 
 @Injectable()
@@ -229,6 +230,7 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
     codigoReferencia: string,
     marca_id: number,
     linea_id: number,
+    superlinea_id: number,
     proveedor_id: number,
     conStock: boolean,
     skip: number,
@@ -239,17 +241,34 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
       .createQueryBuilder('producto')
       .leftJoinAndSelect('producto.marca', 'marca')
       .leftJoinAndSelect('producto.linea', 'linea')
+      .leftJoinAndSelect('linea.superlinea', 'superlinea')
       .leftJoinAndSelect('producto.presentacion', 'presentacion')
 
     if (denominacion || codigoProveedor || codigoReferencia) {
       const condiciones: string[] = [];
-      const parametros: any = {};
+      const parametros: Record<string, any> = {};
 
       if (denominacion) {
-        condiciones.push(
-          `UPPER(producto.denominacion) LIKE UPPER(:denominacion)`,
-        );
-        parametros.denominacion = `%${denominacion}%`;
+        // CR-004: coincidencias parciales por token, sin importar el orden.
+        // Cada token (palabra) debe aparecer en AL MENOS UNO de los campos
+        // (denominación, marca, línea o presentación). La superlínea NO se
+        // busca por texto: se filtra únicamente vía superlineaId.
+        const tokens = parsearTokensBusqueda(denominacion);
+        if (tokens.length > 0) {
+          const tokenConditions = tokens.map(
+            (token, idx) =>
+              `(
+                UPPER(producto.denominacion) LIKE UPPER(:denominacion_${idx}) OR
+                UPPER(marca.denominacion) LIKE UPPER(:denominacion_${idx}) OR
+                UPPER(linea.denominacion) LIKE UPPER(:denominacion_${idx}) OR
+                UPPER(presentacion.denominacion) LIKE UPPER(:denominacion_${idx})
+              )`,
+          );
+          tokens.forEach((token, idx) => {
+            parametros[`denominacion_${idx}`] = `%${token}%`;
+          });
+          condiciones.push(`(${tokenConditions.join(' AND ')})`);
+        }
       }
 
       if (codigoProveedor) {
@@ -281,6 +300,9 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
     }
     if (linea_id) {
       query.andWhere('linea.id = :linea_id', { linea_id });
+    }
+    if (superlinea_id) {
+      query.andWhere('superlinea.id = :superlinea_id', { superlinea_id });
     }
 
     this.logger.warn(`conStock llega como: ${conStock} (${typeof conStock})`);

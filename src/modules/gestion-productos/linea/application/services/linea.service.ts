@@ -17,6 +17,7 @@ import { LineaDto } from '../../dto/linea.dto';
 import { LineaMapper } from '../../mappers/linea.mapper';
 import { PoliticaEliminacionLinea } from '../../domain/services/politica-eliminacion-linea.service';
 import { Linea } from '../../domain/entities/linea.entity';
+import { SuperlineaService } from '../../../superlinea/application/services/superlinea.service';
 
 @Injectable()
 export class LineaService {
@@ -29,6 +30,8 @@ export class LineaService {
     private readonly validacionesService: PoliticaEliminacionLinea,
     private readonly usuarioService: UsuarioService,
 
+    @Inject(forwardRef(() => SuperlineaService))
+    private readonly superlineaService: SuperlineaService,
   ) { }
 
   private readonly ENTITY_NAME = 'Linea';
@@ -38,6 +41,7 @@ export class LineaService {
       `Creando un nuevo ${this.ENTITY_NAME} con denominación: ${dto.denominacion} a: ${dto.denominacion}`,
     );
     await this.checkDenominacionExists(dto.denominacion, 0);
+    await this.superlineaService.findEntityById(dto.superlineaId);
 
 
     const entity = await this.repository.create(dto);
@@ -58,6 +62,8 @@ export class LineaService {
     ensureNotSistemaEntity(linea, 'Linea');
     if (dto.denominacion)
       await this.checkDenominacionExists(dto.denominacion, id);
+    if (dto.superlineaId !== undefined)
+      await this.superlineaService.findEntityById(dto.superlineaId);
 
 
     const entity = await this.repository.update(id, dto);

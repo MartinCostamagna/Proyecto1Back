@@ -45,6 +45,14 @@ export class LineaDto {
   @IsInt()
   sistema: number;
 
+  @ApiProperty({
+    example: 1,
+    description: 'ID de la superlinea a la que pertenece la linea',
+  })
+  @Type(() => Number)
+  @IsInt()
+  superlineaId: number;
+
   @ApiProperty({ example: null, description: 'Fecha de eliminación (null si está activa)', nullable: true })
   @IsOptional()
   deletedAt: string | null;

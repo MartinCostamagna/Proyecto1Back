@@ -21,6 +21,7 @@ import { UpdateProductoDto } from '../../dto/update-producto.dto';
 import { ProductoMapper } from '../../mappers/producto.mapper';
 import { LineaService } from 'src/modules/gestion-productos/linea/application/services/linea.service';
 import { MarcaService } from 'src/modules/gestion-productos/marca/application/services/marca.service';
+import { SuperlineaService } from 'src/modules/gestion-productos/superlinea/application/services/superlinea.service';
 import { ProductoIntrinsicValidationService } from '../../domain/services/producto-intrinsic-validation.service.ts';
 import { ProductoValidationService } from '../../domain/services/producto-validation.service.ts';
 import { ProductoRelatedEntitiesValidator } from '../../infraestructure/validators/producto-related-entities.validator.ts';
@@ -43,6 +44,9 @@ export class ProductoService {
 
     @Inject(forwardRef(() => MarcaService))
     private readonly marcaService: MarcaService,
+
+    @Inject(forwardRef(() => SuperlineaService))
+    private readonly superlineaService: SuperlineaService,
     private readonly proveedorService: ProveedorService,
     private readonly usuarioService: UsuarioService,
 
@@ -178,6 +182,7 @@ export class ProductoService {
     codigoReferencia: string,
     marca_id: number,
     linea_id: number,
+    superlinea_id: number,
     proveedor_id: number,
     conStock: boolean,
     skip: number,
@@ -191,6 +196,7 @@ export class ProductoService {
       codigoReferencia,
       marca_id,
       linea_id,
+      superlinea_id,
       proveedor_id,
       conStock,
       skip,
@@ -273,6 +279,10 @@ export class ProductoService {
 
   async findAllForMarcas(denominacion: string) {
     return this.marcaService.findAllFor(denominacion);
+  }
+
+  async findAllForSuperlineas(denominacion: string) {
+    return this.superlineaService.findAllFor(denominacion);
   }
 
   async findByDenominacionCodigoProveedorFiltered(

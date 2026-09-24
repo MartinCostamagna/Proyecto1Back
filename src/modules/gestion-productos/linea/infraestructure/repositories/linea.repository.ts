@@ -97,5 +97,9 @@ export class LineaRepository implements ILineaRepository {
   async findAllListado(): Promise<Linea[]>{
     return this.persistenceService.findAllListado();
   }
+
+  async existsLineasActivasBySuperlinea(superlineaId: number): Promise<boolean> {
+    return this.persistenceService.existsLineasActivasBySuperlinea(superlineaId);
+  }
   
 }

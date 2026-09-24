@@ -14,6 +14,7 @@ export class LineaMapper {
       utilizaStockMinimo: entity.utilizaStockMinimo,
       observacion: entity.observacion ?? '',
       sistema: entity.sistema,
+      superlineaId: entity.superlineaId,
       deletedAt: entity.deletedAt ? entity.deletedAt.toISOString() : null,
 
     };
