@@ -7,6 +7,7 @@ import {
   IsOptional,
   MaxLength,
   Matches,
+  IsNumber,
 } from 'class-validator';
 import { Transform } from 'class-transformer';
 
@@ -28,5 +29,24 @@ export class UpdateProductoDto extends PartialType(CreateProductoDto) {
   @IsInt({ message: 'El usuarioUpdatedId debe ser un número entero.' })
   usuarioUpdatedId: number;
 
+  // CR-007: Motivo del cambio de precio (opcional en el DTO, el servicio valida si es requerido)
+  @IsOptional()
+  @IsString({ message: 'El motivo debe ser una cadena de texto.' })
+  @MaxLength(255, { message: 'El motivo no puede superar los 255 caracteres.' })
+  motivo?: string;
+
+  @IsOptional()
+  @IsNumber({}, { message: 'El costo debe ser un número.' })
+  costo?: number;
+
+  @IsOptional()
+  @IsNumber({}, { message: 'El porcentaje debe ser un número.' })
+  porcentaje?: number;
+
+  @IsOptional()
+  @IsNumber({}, { message: 'El precio debe ser un número.' })
+  precio?: number;
+
   updatedAt: Date;
+  
 }

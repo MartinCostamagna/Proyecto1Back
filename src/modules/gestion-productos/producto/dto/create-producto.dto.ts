@@ -9,6 +9,7 @@ import {
   IsNumber,
   IsInt,
   IsEnum,
+  Min,
 } from 'class-validator';
 import { AlicuotaIva } from 'src/modules/organizacion/enums/alicuota-iva.enum';
 
@@ -51,11 +52,13 @@ export class CreateProductoDto {
   utilizaStockMinimo: boolean;
 
   @IsOptional()
-  @IsInt()
+  @IsInt({message: 'El stock minimo debe ser un numero entero.'})
+  @Min(0,{message: 'El stock minimo no puede ser negativo.'})
   stockMinimo?: number;
 
   @IsOptional()
-  @IsInt()
+  @IsInt({message: 'El stock debe ser un numero entero.'})
+  @Min(0, { message: 'El stock actual no puede ser negativo.' })  
   stock?: number;
 
   @IsOptional()
@@ -74,18 +77,21 @@ export class CreateProductoDto {
   envioGratis?: boolean;
 
   @IsOptional()
-  @IsNumber()
+  @IsNumber({}, {message: 'El costo debe ser un valor numerico.'})
+  @Min(0, { message: 'El costo no puede ser un valor negativo.' })
   costo?: number;
 
   @IsBoolean()
   utilizaPack: boolean;
 
   @IsOptional()
-  @IsInt()
+  @IsInt({message: 'La cantidad por pack debe ser un numero entero.'})
+  @Min(1, { message: 'La cantidad por pack no puede ser menor a 1.' })
   cantidadPorPack?: number;
 
   @IsOptional()
-  @IsNumber()
+  @IsNumber({},{message: 'El costo en dólares debe ser un número.'})
+  @Min(0, { message: 'El costo en dólares no puede ser negativo.' })
   costoDolar?: number;
 
   @IsNotEmpty({ message: 'La linea es obligatoria.' })
@@ -104,12 +110,18 @@ export class CreateProductoDto {
 
 
   @IsOptional()
-  @IsNumber()
+  @IsNumber({},{message: 'El porcentaje debe ser un valor numérico.'})
+  @Min(0, { message: 'El porcentaje de margen no puede ser negativo.' })
   porcentaje?: number;
 
   @IsOptional()
-  @IsNumber()
+  @IsNumber({},{message: 'El precio debe ser un valor numérico.'})
+  @Min(0, { message: 'El precio no puede ser negativo.' })
   precio: number;
+
+  @IsOptional()
+  @IsString({ message: 'El motivo debe ser texto.' })
+  motivo?: string;
 
   createdAt?: Date;
 
