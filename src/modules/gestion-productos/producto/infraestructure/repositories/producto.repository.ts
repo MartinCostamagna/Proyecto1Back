@@ -18,11 +18,11 @@ export class ProductoRepository implements IProductoRepository {
 
   constructor(
     private readonly persistenceService: ProductoPersistenceAdapter,
-  ) {}
+  ) { }
   findByIds(ids: number[]): Promise<Producto[]> {
     throw new Error('Method not implemented.');
   }
-  
+
 
   private readonly ENTITY_NAME = 'Producto';
 
@@ -141,6 +141,14 @@ export class ProductoRepository implements IProductoRepository {
     return this.persistenceService.actualizarPrecio(id, dto, usuario);
   }
 
+  async findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]> {
+    return this.persistenceService.findAllByFilters(filters);
+  }
+
+  async saveMasivos(productos: Producto[]): Promise<Producto[]> {
+    return this.persistenceService.saveMasivos(productos);
+  }
+
 
   async findByDenominacion(denominacion: string): Promise<Producto | null> {
     const entity =
@@ -186,12 +194,12 @@ export class ProductoRepository implements IProductoRepository {
     return this.persistenceService.findByIdWithoutRelations(id);
   }
 
-  async  existsByDenominacion(denominacion: string, excludeId?: number): Promise<boolean> {
-    return this.persistenceService.existsByDenominacion(denominacion, excludeId); 
+  async existsByDenominacion(denominacion: string, excludeId?: number): Promise<boolean> {
+    return this.persistenceService.existsByDenominacion(denominacion, excludeId);
   }
 
-  async  existsByCodigoProveedor(codigoProveedor: string, excludeId: number): Promise<boolean> {
-   return this.persistenceService.existsByCodigoProveedor(codigoProveedor, excludeId);
+  async existsByCodigoProveedor(codigoProveedor: string, excludeId: number): Promise<boolean> {
+    return this.persistenceService.existsByCodigoProveedor(codigoProveedor, excludeId);
   }
 
 }

@@ -61,6 +61,11 @@ export interface IProductoRepository {
     dto: UpdatePrecioDto,
     usuario: Usuario,
   ): Promise<void>;
+
+  findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]>;
+
+  saveMasivos(productos: Producto[]): Promise<Producto[]>;
+
   remove(data: Producto, usuario: Usuario): Promise<Producto>;
 
   isCodigoProveedorDuplicado(

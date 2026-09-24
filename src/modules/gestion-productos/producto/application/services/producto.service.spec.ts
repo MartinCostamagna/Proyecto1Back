@@ -64,6 +64,8 @@ describe('ProductoService', () => {
       findByDenominacionCodigoProveedorFiltered: jest.fn(),
       findByIds: jest.fn(),
       findByIdConAuditoria: jest.fn(),
+      findAllByFilters: jest.fn(),
+      saveMasivos: jest.fn(),
       remove: jest.fn(),
       existsProductosActivosByMarca: jest.fn(),
       existsProductosActivosByLinea: jest.fn(),
@@ -294,6 +296,50 @@ describe('ProductoService', () => {
 
       await expect(service.remove(1, 3)).rejects.toThrow(NotFoundException);
       expect(repository.remove).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('actualizacionMasivaPrecios', () => {
+    it('debería actualizar los precios de todos los productos por porcentaje cuando no hay línea', async () => {
+      usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
+      repository.findAllByFilters.mockResolvedValue([
+        { id: 1, precio: 100, usuarioUpdated: null },
+        { id: 2, precio: 200, usuarioUpdated: null },
+      ] as any);
+      repository.saveMasivos.mockResolvedValue(undefined);
+
+      const result = await service.actualizarPreciosMasivos({
+        tipo: 'PORCENTAJE',
+        valor: 10,
+        usuarioId: 7,
+      } as any);
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: undefined });
+      expect(repository.saveMasivos).toHaveBeenCalledWith([
+        expect.objectContaining({ id: 1, precio: 110 }),
+        expect.objectContaining({ id: 2, precio: 220 }),
+      ]);
+      expect(result.mensaje).toContain('precios masivos');
+    });
+
+    it('debería aplicar un monto fijo solo a la línea indicada', async () => {
+      usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
+      repository.findAllByFilters.mockResolvedValue([
+        { id: 3, precio: 50, usuarioUpdated: null },
+      ] as any);
+      repository.saveMasivos.mockResolvedValue(undefined);
+
+      await service.actualizarPreciosMasivos({
+        tipo: 'MONTO',
+        valor: 15,
+        lineaId: 9,
+        usuarioId: 7,
+      } as any);
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: 9 });
+      expect(repository.saveMasivos).toHaveBeenCalledWith([
+        expect.objectContaining({ id: 3, precio: 65 }),
+      ]);
     });
   });
 

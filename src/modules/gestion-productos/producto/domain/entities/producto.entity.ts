@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  RelationId,
   Index,
   JoinColumn,
 } from 'typeorm';
@@ -142,7 +143,7 @@ export class Producto {
   lineaId?: number;
 
 
- // ==========  MARCA ==========
+  // ==========  MARCA ==========
   @ManyToOne(() => Marca, (marca) => marca.productos)
   @JoinColumn({ name: 'marca_id' })
   marca: Marca;
@@ -155,7 +156,7 @@ export class Producto {
   @JoinColumn({ name: 'presentacion_id' })
   presentacion?: Presentacion | null;
 
-  @Column({ type: 'int', nullable: true })
+  @RelationId((producto: Producto) => producto.presentacion)
   presentacionId?: number | null;
 
 

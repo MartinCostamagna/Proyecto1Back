@@ -31,24 +31,24 @@ export class MessageFrontUtils {
     );
   }
 
-    static createSimple2(
+  static createSimple2(
     nombre: string,
     numeroDocumento: string,
-    cambioEstado : string,
+    cambioEstado: string,
   ): MensajeDto {
     return this.create(
-      `${nombre} ${ numeroDocumento} a cambiado de ${cambioEstado} con éxito `,
+      `${nombre} ${numeroDocumento} a cambiado de ${cambioEstado} con éxito `,
     );
   }
- 
+
   static createActualizacionPrecioMasiva(
     denominacion: string,
   ): MensajeDto {
     return this.create(
-      ` La actualización de precios masiva se realizo : ${denominacion}`,
+      `Actualización de precios masivos aplicada: ${denominacion}`,
     );
   }
-  
+
   static create2(nombre: string): MensajeDto {
     return this.create(`${nombre}  con éxito`);
   }

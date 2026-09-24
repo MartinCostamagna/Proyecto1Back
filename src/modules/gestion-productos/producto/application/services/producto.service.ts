@@ -29,6 +29,10 @@ import { UsuarioValidator } from 'src/modules/common/utils/validation/usuario-va
 import { ProductoDeletePolicy } from '../policies/producto-delete.policy';
 
 import { generarDenominacionProducto } from '../../utils/producto.util';
+import {
+  ActualizarPreciosMasivosDto,
+  TipoActualizacionPrecio,
+} from '../../dto/actualizar-precios-masivos.dto';
 @Injectable()
 export class ProductoService {
   private readonly logger = new Logger(ProductoService.name);
@@ -104,6 +108,44 @@ export class ProductoService {
       `${this.ENTITY_NAME}`,
       entity.denominacion,
       'editada',
+    );
+  }
+
+  async actualizarPreciosMasivos(dto: ActualizarPreciosMasivosDto) {
+    const { tipo, valor, lineaId, usuarioId } = dto;
+
+    if (!Object.values(TipoActualizacionPrecio).includes(tipo)) {
+      throw new InternalServerErrorException('Tipo de actualización inválido');
+    }
+
+    const usuario = await this.usuarioService.findOne(usuarioId);
+    if (!usuario) {
+      throw new NotFoundException(`Usuario con ID ${usuarioId} no encontrado.`);
+    }
+
+    const productos = await this.repository.findAllByFilters({ lineaId });
+
+    const productosActualizados = productos.map((producto) => {
+      const precioActual = Number(producto.precio ?? 0);
+      let nuevoPrecio = precioActual;
+
+      if (tipo === TipoActualizacionPrecio.PORCENTAJE) {
+        nuevoPrecio = Number(((precioActual * (1 + valor / 100))).toFixed(2));
+      }
+
+      if (tipo === TipoActualizacionPrecio.MONTO) {
+        nuevoPrecio = Number((precioActual + valor).toFixed(2));
+      }
+
+      producto.precio = Math.max(0, nuevoPrecio);
+      producto.usuarioUpdated = usuario;
+      return producto;
+    });
+
+    await this.repository.saveMasivos(productosActualizados);
+
+    return MessageFrontUtils.createActualizacionPrecioMasiva(
+      lineaId ? `línea ${lineaId}` : 'global',
     );
   }
 
@@ -207,7 +249,7 @@ export class ProductoService {
         `${this.ENTITY_NAME} con ID ${id} no encontrado.`,
       );
     }
-    
+
 
     ensureNotSistemaEntity(entity, 'Producto');
 

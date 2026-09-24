@@ -31,6 +31,7 @@ import { NormalizeDenominacionSearchPipe } from 'src/modules/common/pipes/normal
 import { DenominacionBusquedaDto } from 'src/modules/common/dto/denominacion-busqueda.dto';
 import { SearchProductoRapidoDto } from '../../dto/search-producto-rapido.dto';
 import { ProductoService } from '../services/producto.service';
+import { ActualizarPreciosMasivosDto } from '../../dto/actualizar-precios-masivos.dto';
 
 
 @ApiTags('Gestion Productos')
@@ -38,7 +39,7 @@ import { ProductoService } from '../services/producto.service';
 @UseGuards(AuthGuard)
 export class ProductoController {
   private readonly logger = new Logger(ProductoController.name);
-  constructor(private readonly service: ProductoService) {}
+  constructor(private readonly service: ProductoService) { }
 
   private readonly ENTITY_NAME = 'Producto';
 
@@ -50,7 +51,7 @@ export class ProductoController {
     this.logger.log(`Creando un nuevo ${this.ENTITY_NAME}...`);
     return this.service.create(createDto);
   }
-  
+
   @Get('find-all-for-marcas/select')
   @Roles(
     'Root',
@@ -110,13 +111,13 @@ export class ProductoController {
   async search(@Query() dto: SearchProductoPaginationWithDto) {
     const {
       denominacion = '',
-      codProveedorExacto,
-      codigoProveedor,
+      codProveedorExacto = false,
+      codigoProveedor = '',
       codigoReferencia,
       marcaId,
       lineaId,
       proveedorId,
-      conStock,
+      conStock = false,
       skip,
       take,
     } = dto;
@@ -124,7 +125,7 @@ export class ProductoController {
       denominacion,
       codigoProveedor,
       codProveedorExacto,
-      codigoReferencia,
+      codigoReferencia ?? '',
       marcaId,
       lineaId,
       proveedorId,
@@ -165,6 +166,13 @@ export class ProductoController {
   ) {
     this.logger.log(`Actualizando  ${this.ENTITY_NAME} con ID: ${id}`);
     return this.service.update(id, updateDto);
+  }
+
+  @Post('precios-masivos')
+  @Roles('Root', 'Administrador', 'Empleado')
+  actualizarPreciosMasivos(@Body() dto: ActualizarPreciosMasivosDto) {
+    this.logger.log(`Actualizando precios masivos de ${this.ENTITY_NAME}`);
+    return this.service.actualizarPreciosMasivos(dto);
   }
 
   @Delete(':id')

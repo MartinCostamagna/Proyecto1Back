@@ -8,27 +8,29 @@ export class SearchProductoPaginationWithDto {
 
   @IsOptional()
   @IsString()
-  codigoProveedor: string;
- 
+  codigoProveedor?: string;
+
   @IsOptional()
   @IsString()
-  codigoReferencia: string;
-  
-  @Transform(({ value }) => {
-    if (value === 'true') return true;
-    if (value === 'false') return false;
-    return undefined;
-  })
-  @IsBoolean()
-  codReferenciaExacto: boolean = false;
+  codigoReferencia?: string;
 
+  @IsOptional()
   @Transform(({ value }) => {
     if (value === 'true') return true;
     if (value === 'false') return false;
     return undefined;
   })
   @IsBoolean()
-  codProveedorExacto: boolean = false;
+  codReferenciaExacto?: boolean;
+
+  @IsOptional()
+  @Transform(({ value }) => {
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    return undefined;
+  })
+  @IsBoolean()
+  codProveedorExacto?: boolean;
 
   @IsInt()
   @Min(0, { message: 'skip debe ser un número entero positivo o 0' })
@@ -54,7 +56,7 @@ export class SearchProductoPaginationWithDto {
   @IsOptional()
   @Type(() => Number)
   @IsInt()
-  proveedorId: number; 
+  proveedorId: number;
 
   @IsOptional()
   @Transform(({ value }) => {
@@ -63,6 +65,6 @@ export class SearchProductoPaginationWithDto {
     return undefined;
   })
   @IsBoolean()
-  conStock: boolean;
+  conStock?: boolean;
 
 }

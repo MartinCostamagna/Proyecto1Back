@@ -186,7 +186,7 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
         presentacion: presentacion ?? null,
       });
 
-      entity.usuarioUpdated = usuario; 
+      entity.usuarioUpdated = usuario;
       const entityActualizada = await repo.save(entity);
 
 
@@ -390,6 +390,22 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
 
     await repo.save(entity);
 
+  }
+
+  async findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]> {
+    const query = this.repository
+      .createQueryBuilder('producto')
+      .where('producto.deletedAt IS NULL');
+
+    if (filters.lineaId !== undefined && filters.lineaId !== null) {
+      query.andWhere('producto.lineaId = :lineaId', { lineaId: filters.lineaId });
+    }
+
+    return query.getMany();
+  }
+
+  async saveMasivos(productos: Producto[]): Promise<Producto[]> {
+    return this.repository.save(productos);
   }
 
   async findByDenominacion(denominacion: string): Promise<Producto | null> {
