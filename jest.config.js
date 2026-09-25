@@ -99,6 +99,30 @@ module.exports = {
         functions: 80,
         lines: 80,
       },
+      // ============ CR-007: HISTORIAL DE PRECIOS ============
+      // El CR se sostiene sobre las reglas de negocio del service (calculo de
+      // precio, validacion > 0, motivo obligatorio, transaccionalidad), por eso
+      // se exige 90% en lugar del 80% general. Las entidades y el modulo Nest
+      // quedan fuera: son contenedores sin logica propia y se ejercitan a
+      // traves de la transaccion real probada en el persistence spec.
+      'src/modules/gestion-productos/producto/mappers/historial-precio.mapper.ts': {
+        statements: 90,
+        branches: 90,
+        functions: 90,
+        lines: 90,
+      },
+      'src/modules/gestion-productos/producto/dto/search-historial-precio.dto.ts': {
+        statements: 90,
+        branches: 90,
+        functions: 90,
+        lines: 90,
+      },
+      'src/modules/gestion-productos/producto/dto/actualizar-precios-masivos.dto.ts': {
+        statements: 90,
+        branches: 90,
+        functions: 90,
+        lines: 90,
+      },
     },
     moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',

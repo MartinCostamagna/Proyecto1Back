@@ -77,17 +77,9 @@ export class CreateProductoDto {
   envioGratis?: boolean;
 
   @IsOptional()
-  @IsNumber({}, {message: 'El costo debe ser un valor numerico.'})
+  @IsNumber({},{message: 'El costo debe ser un valor numerico.'})
   @Min(0, { message: 'El costo no puede ser un valor negativo.' })
   costo?: number;
-
-  @IsBoolean()
-  utilizaPack: boolean;
-
-  @IsOptional()
-  @IsInt({message: 'La cantidad por pack debe ser un numero entero.'})
-  @Min(1, { message: 'La cantidad por pack no puede ser menor a 1.' })
-  cantidadPorPack?: number;
 
   @IsOptional()
   @IsNumber({},{message: 'El costo en dólares debe ser un número.'})

@@ -33,6 +33,8 @@ import { DenominacionBusquedaDto } from 'src/modules/common/dto/denominacion-bus
 import { SearchProductoRapidoDto } from '../../dto/search-producto-rapido.dto';
 import { ProductoService } from '../services/producto.service';
 import { ActualizarPreciosMasivosDto } from '../../dto/actualizar-precios-masivos.dto';
+import { HistorialPrecioDto } from '../../dto/historial-precio.dto';
+import { SearchHistorialPrecioDto } from '../../dto/search-historial-precio.dto';
 
 
 @ApiTags('Gestion Productos')
@@ -165,6 +167,22 @@ export class ProductoController {
   @Roles('Root', 'Administrador', 'Empleado')
   async geLineaDelProducto(@Param('id', ParseIntPipe) id: number) {
     return this.service.buscarLineaDesdeProducto(id);
+  }
+
+  /**
+   * CR-007: Listado del historial de precios.
+   * OJO: debe declararse ANTES de `@Get(':id')` (abajo), si no Nest
+   * matchea "historial-precios" como un id.
+   */
+  @Get('historial-precios')
+  @Roles('Root', 'Administrador', 'Empleado')
+  @ApiTags('CR-007 Historial de Precios')
+  @ApiOkResponse({ description: 'Historial de cambios de precio (paginado)' })
+  async findHistorialBy(
+    @Query() filtros: SearchHistorialPrecioDto,
+  ): Promise<{ data: HistorialPrecioDto[]; total: number }> {
+    this.logger.log(`Consultando historial de precios`);
+    return this.service.findHistorialBy(filtros);
   }
 
   @Get(':id')

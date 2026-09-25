@@ -11,6 +11,8 @@ import { DatabaseConnectionException } from 'src/modules/common/exceptions/datab
 import { IUnitOfWork } from 'src/modules/common/unit-of-work/iunit-of-work.';
 import { Usuario } from 'src/modules/gestion-usuario/usuario/domain/entities/usuario.entity';
 import { UpdatePrecioDto } from '../../dto/update-precio.dto';
+import { HistorialPrecioDto } from '../../dto/historial-precio.dto';
+import { SearchHistorialPrecioDto } from '../../dto/search-historial-precio.dto';
 
 @Injectable()
 export class ProductoRepository implements IProductoRepository {
@@ -202,6 +204,50 @@ export class ProductoRepository implements IProductoRepository {
 
   async existsByCodigoProveedor(codigoProveedor: string, excludeId: number): Promise<boolean> {
     return this.persistenceService.existsByCodigoProveedor(codigoProveedor, excludeId);
+  }
+
+  // ========== CR-007: HISTORIAL DE PRECIOS ==========
+
+  async findHistorialBy(
+    filtros: SearchHistorialPrecioDto,
+  ): Promise<{ data: HistorialPrecioDto[]; total: number }> {
+    return this.persistenceService.findHistorialBy(filtros);
+  }
+
+  async updateConHistorialPrecio(
+    id: number,
+    data: UpdateProductoDto,
+    linea: Linea,
+    marca: Marca,
+    usuario: Usuario,
+    presentacion: Presentacion | null,
+    historial: {
+      precioAnterior: number;
+      precioNuevo: number;
+      motivo: string;
+    } | null,
+  ): Promise<Producto> {
+    return this.persistenceService.updateConHistorialPrecio(
+      id,
+      data,
+      linea,
+      marca,
+      usuario,
+      presentacion,
+      historial,
+    );
+  }
+
+  async saveMasivosConHistorial(
+    productos: Producto[],
+    usuario: Usuario,
+    motivo: string,
+  ): Promise<Producto[]> {
+    return this.persistenceService.saveMasivosConHistorial(
+      productos,
+      usuario,
+      motivo,
+    );
   }
 
 }

@@ -24,8 +24,6 @@ function buildEntity(presentacion?: Partial<Presentacion> | null): Producto {
     envioGratis: false,
     utilizaStockMinimo: false,
     stockMinimo: 0,
-    utilizaPack: false,
-    cantidadPorPack: 0,
     sistema: 0,
     ubicacion: 'A1',
     linea: { id: 1, denominacion: 'GASEOSAS' },
@@ -62,8 +60,6 @@ function buildEntityConCamposNulos(): Producto {
     envioGratis: null,
     utilizaStockMinimo: null,
     stockMinimo: null,
-    utilizaPack: null,
-    cantidadPorPack: null,
     sistema: 0,
     ubicacion: null,
     linea: { id: 1, denominacion: 'GASEOSAS' } as never,
@@ -107,8 +103,6 @@ describe('ProductoMapper - presentacion', () => {
       expect(dto.ubicacion).toBe('');
       expect(dto.utilizaStockMinimo).toBe(false);
       expect(dto.stockMinimo).toBe(0);
-      expect(dto.utilizaPack).toBe(false);
-      expect(dto.cantidadPorPack).toBe(0);
       expect(dto.codigoReferencia).toBe('');
       expect(dto.cotizacionDolar).toBe(0);
     });
@@ -139,7 +133,6 @@ describe('ProductoMapper - presentacion', () => {
       expect(dto.costo).toBe(0);
       expect(dto.observacion).toBe('');
       expect(dto.ubicacion).toBe('');
-      expect(dto.cantidadPorPack).toBe(0);
       expect(dto.codigoProveedor).toBe('');
       expect(dto.codigoReferencia).toBe('');
     });

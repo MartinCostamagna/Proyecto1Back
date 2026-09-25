@@ -39,8 +39,6 @@ export class ProductoMapper {
       utilizaStockMinimo: entity.utilizaStockMinimo,
 
       stockMinimo: entity.stockMinimo,
-      utilizaPack: entity.utilizaPack,
-      cantidadPorPack: entity.cantidadPorPack ?? 0,
       sistema: entity.sistema,
       codigoReferencia: entity.codigoReferencia ?? '',
 
@@ -100,8 +98,6 @@ export class ProductoMapper {
       ubicacion: entity.ubicacion ?? '',
       utilizaStockMinimo: entity.utilizaStockMinimo ?? false,
       stockMinimo: entity.stockMinimo ?? 0,
-      utilizaPack: entity.utilizaPack ?? false,
-      cantidadPorPack: entity.cantidadPorPack ?? 0,
       sistema: entity.sistema,
       codigoReferencia: entity.codigoReferencia ?? '',
 

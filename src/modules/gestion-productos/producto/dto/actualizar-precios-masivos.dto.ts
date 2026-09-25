@@ -1,5 +1,5 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
-import { IsEnum, IsNumber, IsOptional, Min } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsNumber, IsOptional, IsString, Matches, MaxLength, Min } from 'class-validator';
 
 export enum TipoActualizacionPrecio {
     PORCENTAJE = 'PORCENTAJE',
@@ -37,4 +37,16 @@ export class ActualizarPreciosMasivosDto {
     @IsNumber()
     @Min(1)
     usuarioId: number;
+
+    @ApiProperty({
+        example: 'Aumento general por Actualización de listas de precios',
+        description: 'CR-007: motivo obligatorio del cambio de precio. Queda registrado en el historial de cada producto afectado.',
+    })
+    @IsString()
+    @IsNotEmpty({ message: 'El motivo del cambio de precio es obligatorio.' })
+    @Matches(/\S/, {
+        message: 'El motivo del cambio de precio no puede tener solo espacios.',
+    })
+    @MaxLength(255)
+    motivo: string;
 }

@@ -8,7 +8,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'Producto Test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100.50,
@@ -23,7 +22,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'PRODUCTO TEST',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -49,8 +47,6 @@ describe('CreateProductoDto', () => {
         destacado: true,
         envioGratis: true,
         costo: 50.75,
-        utilizaPack: true,
-        cantidadPorPack: 12,
         costoDolar: 25.50,
         lineaId: 1,
         marcaId: 1,
@@ -79,7 +75,6 @@ describe('CreateProductoDto', () => {
         const data = {
           denominacion,
           utilizaStockMinimo: false,
-          utilizaPack: false,
           lineaId: 1,
           marcaId: 1,
           precio: 100,
@@ -97,7 +92,6 @@ describe('CreateProductoDto', () => {
         costoEnDolar: 'true',
         destacado: 'true',
         envioGratis: 'false',
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -120,7 +114,6 @@ describe('CreateProductoDto', () => {
         const data = {
           denominacion: 'producto test',
           utilizaStockMinimo: false,
-          utilizaPack: false,
           lineaId: 1,
           marcaId: 1,
           precio: 100,
@@ -137,7 +130,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: '',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -151,7 +143,6 @@ describe('CreateProductoDto', () => {
     it('debería ser válido si denominacion no está presente (CR-005: se autogenera)', async () => {
       const data = {
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -166,7 +157,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 123,
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -185,7 +175,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'a'.repeat(256),
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -212,7 +201,6 @@ describe('CreateProductoDto', () => {
         const data = {
           denominacion,
           utilizaStockMinimo: false,
-          utilizaPack: false,
           lineaId: 1,
           marcaId: 1,
           precio: 100,
@@ -235,7 +223,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: 'not a boolean',
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -253,7 +240,6 @@ describe('CreateProductoDto', () => {
     it('debería fallar si utilizaStockMinimo no está presente', async () => {
       const data = {
         denominacion: 'producto test',
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -269,51 +255,11 @@ describe('CreateProductoDto', () => {
     });
   });
 
-  describe('Validación del campo utilizaPack', () => {
-    it('debería fallar si utilizaPack no es booleano', async () => {
-      const data = {
-        denominacion: 'producto test',
-        utilizaStockMinimo: false,
-        utilizaPack: 'not a boolean',
-        lineaId: 1,
-        marcaId: 1,
-        precio: 100,
-        alicuotaIva: AlicuotaIva.ALICUOTA_21,
-        usuarioCreatedId: 1,
-      };
-
-      await DtoValidatorHelper.expectFieldError(
-        CreateProductoDto,
-        data,
-        'utilizaPack',
-      );
-    });
-
-    it('debería fallar si utilizaPack no está presente', async () => {
-      const data = {
-        denominacion: 'producto test',
-        utilizaStockMinimo: false,
-        lineaId: 1,
-        marcaId: 1,
-        precio: 100,
-        alicuotaIva: AlicuotaIva.ALICUOTA_21,
-        usuarioCreatedId: 1,
-      };
-
-      await DtoValidatorHelper.expectFieldError(
-        CreateProductoDto,
-        data,
-        'utilizaPack',
-      );
-    });
-  });
-
   describe('Validación del campo lineaId', () => {
     it('debería fallar si lineaId no está presente', async () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         marcaId: 1,
         precio: 100,
         alicuotaIva: AlicuotaIva.ALICUOTA_21,
@@ -332,7 +278,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1.5,
         marcaId: 1,
         precio: 100,
@@ -352,7 +297,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: '1',
         marcaId: 1,
         precio: 100,
@@ -373,7 +317,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         precio: 100,
         alicuotaIva: AlicuotaIva.ALICUOTA_21,
@@ -392,7 +335,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1.5,
         precio: 100,
@@ -414,7 +356,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -432,7 +373,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -454,7 +394,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -473,7 +412,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -496,7 +434,6 @@ describe('CreateProductoDto', () => {
         denominacion: 'producto test',
         utilizaStockMinimo: true,
         stockMinimo: 10,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -512,7 +449,6 @@ describe('CreateProductoDto', () => {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
         stock: 100,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100,
@@ -529,7 +465,6 @@ describe('CreateProductoDto', () => {
         utilizaStockMinimo: false,
         costo: 50.75,
         costoDolar: 25.50,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         precio: 100.50,
@@ -544,7 +479,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto test',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         lineaId: 1,
         marcaId: 1,
         porcentaje: 30,
@@ -568,12 +502,10 @@ describe('CreateProductoDto', () => {
       expect(errors.length).toBeGreaterThan(0);
     });
 
-    it('debería manejar producto con pack completo', async () => {
+    it('debería manejar producto sin caracteristicas especiales', async () => {
       const data = {
-        denominacion: 'producto pack',
+        denominacion: 'producto simple',
         utilizaStockMinimo: false,
-        utilizaPack: true,
-        cantidadPorPack: 24,
         lineaId: 1,
         marcaId: 1,
         precio: 1200,
@@ -588,7 +520,6 @@ describe('CreateProductoDto', () => {
       const data = {
         denominacion: 'producto decimal',
         utilizaStockMinimo: false,
-        utilizaPack: false,
         costo: 99.99,
         precio: 149.99,
         lineaId: 1,
@@ -605,7 +536,6 @@ describe('CreateProductoDto', () => {
     const baseData = {
       denominacion: 'producto test',
       utilizaStockMinimo: false,
-      utilizaPack: false,
       lineaId: 1,
       marcaId: 1,
       precio: 100,

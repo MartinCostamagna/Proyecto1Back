@@ -14,6 +14,10 @@ import { IProductoRepository } from '../../domain/interfaces/producto.repository
 import { CreateProductoDto } from '../../dto/create-producto.dto';
 import { UpdatePrecioDto } from '../../dto/update-precio.dto';
 import { UpdateProductoDto } from '../../dto/update-producto.dto';
+import { HistorialPrecio } from '../../domain/entities/historial-precio.entity';
+import { HistorialPrecioDto } from '../../dto/historial-precio.dto';
+import { SearchHistorialPrecioDto } from '../../dto/search-historial-precio.dto';
+import { HistorialPrecioMapper } from '../../mappers/historial-precio.mapper';
 import { ProductoMapper } from '../../mappers/producto.mapper';
 import { parsearTokensBusqueda } from '../../utils/producto.util';
 
@@ -428,6 +432,160 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
 
   async saveMasivos(productos: Producto[]): Promise<Producto[]> {
     return this.repository.save(productos);
+  }
+
+  // ==================================================================
+  //  CR-007: HISTORIAL DE PRECIOS
+  // ==================================================================
+
+  async findHistorialBy(
+    filtros: SearchHistorialPrecioDto,
+  ): Promise<{ data: HistorialPrecioDto[]; total: number }> {
+    const {
+      denominacion = '',
+      productoId,
+      fechaDesde,
+      fechaHasta,
+      motivo = '',
+      skip = 0,
+      take = 10,
+    } = filtros;
+
+    const qb = this.dataSource
+      .getRepository(HistorialPrecio)
+      .createQueryBuilder('historial')
+      .leftJoinAndSelect('historial.producto', 'producto')
+      .leftJoinAndSelect('producto.linea', 'linea')
+      .leftJoinAndSelect('historial.usuarioCreated', 'usuarioCreated')
+      .where('historial.deletedAt IS NULL');
+
+    if (productoId !== undefined && productoId !== null) {
+      qb.andWhere('historial.producto.id = :productoId', { productoId });
+    }
+
+    if (denominacion.trim()) {
+      qb.andWhere('producto.denominacion LIKE :denominacion', {
+        denominacion: `%${denominacion.trim()}%`,
+      });
+    }
+
+    if (motivo.trim()) {
+      qb.andWhere('historial.motivo LIKE :motivo', {
+        motivo: `%${motivo.trim()}%`,
+      });
+    }
+
+    if (fechaDesde) {
+      // Al inicio del día, para que el filtro "desde" sea inclusivo.
+      qb.andWhere('historial.fecha >= :fechaDesde', {
+        fechaDesde: `${fechaDesde.slice(0, 10)} 00:00:00`,
+      });
+    }
+
+    if (fechaHasta) {
+      // Al final del día, para que el filtro "hasta" sea inclusivo.
+      qb.andWhere('historial.fecha <= :fechaHasta', {
+        fechaHasta: `${fechaHasta.slice(0, 10)} 23:59:59`,
+      });
+    }
+
+    const total = await qb.getCount();
+
+    const registros = await qb
+      .orderBy('historial.fecha', 'DESC')
+      .addOrderBy('historial.id', 'DESC')
+      .skip(skip)
+      .take(take)
+      .getMany();
+
+    return {
+      data: registros.map((registro) => HistorialPrecioMapper.toDto(registro)),
+      total,
+    };
+  }
+
+  /**
+   * CR-007: Actualiza el producto y registra el cambio de precio en la
+   * MISMA transaccion. Si el historial falla, el producto no se toca.
+   */
+  @Transactional()
+  async updateConHistorialPrecio(
+    id: number,
+    data: UpdateProductoDto,
+    linea: Linea,
+    marca: Marca,
+    usuario: Usuario,
+    presentacion: Presentacion | null,
+    historial: {
+      precioAnterior: number;
+      precioNuevo: number;
+      motivo: string;
+    } | null,
+  ): Promise<Producto> {
+    const productoRepo = this.uow.getRepository(Producto);
+    const historialRepo = this.uow.getRepository(HistorialPrecio);
+
+    const entity = await productoRepo.findOne({ where: { id } });
+    if (!entity) {
+      throw new NotFoundException(`Producto con ID ${id} no encontrado`);
+    }
+
+    Object.assign(entity, data, {
+      linea,
+      marca,
+      presentacion: presentacion ?? null,
+      usuarioUpdated: usuario,
+    });
+
+    const entityActualizada = await productoRepo.save(entity);
+
+    if (historial) {
+      await historialRepo.save(
+        historialRepo.create({
+          precioAnterior: historial.precioAnterior,
+          precioNuevo: historial.precioNuevo,
+          motivo: historial.motivo,
+          producto: entityActualizada,
+          usuarioCreated: usuario,
+        }),
+      );
+    }
+
+    return entityActualizada;
+  }
+
+  /**
+   * CR-007: Guarda el cambio masivo de precios y un registro de historial por
+   * cada producto cuyo precio efectivamente cambio, todo en la misma transaccion.
+   */
+  @Transactional()
+  async saveMasivosConHistorial(
+    productos: Producto[],
+    usuario: Usuario,
+    motivo: string,
+  ): Promise<Producto[]> {
+    const productoRepo = this.uow.getRepository(Producto);
+    const historialRepo = this.uow.getRepository(HistorialPrecio);
+
+    const guardados = await productoRepo.save(productos);
+
+    const registros = guardados
+      .filter((producto) => producto.precioHistorialRegistrado !== undefined)
+      .map((producto) =>
+        historialRepo.create({
+          precioAnterior: producto.precioHistorialRegistrado!,
+          precioNuevo: Number(producto.precio ?? 0),
+          motivo,
+          producto,
+          usuarioCreated: usuario,
+        }),
+      );
+
+    if (registros.length) {
+      await historialRepo.save(registros);
+    }
+
+    return guardados;
   }
 
   async findByDenominacion(denominacion: string): Promise<Producto | null> {

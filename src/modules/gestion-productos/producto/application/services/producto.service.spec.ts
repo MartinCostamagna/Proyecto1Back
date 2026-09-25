@@ -37,6 +37,11 @@ function buildProducto(presentacionId: number | null = 2) {
     stock: 5,
     codigoProveedor: 'P-001',
     sistema: 0,
+    // CR-007: el producto arranca con un precio válido para que las pruebas
+    // de denominación no choquen con la regla "precio > 0".
+    costo: 100,
+    precio: 100,
+    porcentaje: 0,
     linea: { id: 1, denominacion: 'GASEOSAS' },
     marca: { id: 1, denominacion: 'COCA' },
   };
@@ -59,6 +64,7 @@ describe('ProductoService', () => {
     repository = {
       create: jest.fn(),
       update: jest.fn(),
+      updateConHistorialPrecio: jest.fn(),
       updateEntity: jest.fn(),
       findOne: jest.fn(),
       findBy: jest.fn(),
@@ -68,6 +74,8 @@ describe('ProductoService', () => {
       findByIdConAuditoria: jest.fn(),
       findAllByFilters: jest.fn(),
       saveMasivos: jest.fn(),
+      saveMasivosConHistorial: jest.fn(),
+      findHistorialBy: jest.fn(),
       remove: jest.fn(),
       existsProductosActivosByMarca: jest.fn(),
       existsProductosActivosByLinea: jest.fn(),
@@ -146,7 +154,6 @@ describe('ProductoService', () => {
     return {
       denominacion: '',
       utilizaStockMinimo: false,
-      utilizaPack: false,
       lineaId: 1,
       marcaId: 1,
       ...(presentacionId != null ? { presentacionId } : {}),
@@ -218,7 +225,7 @@ describe('ProductoService', () => {
     it('debería autogenerar la denominación si viene explícitamente vacía', async () => {
       repository.findOne.mockResolvedValue(buildProducto());
       setupEntidades();
-      repository.update.mockResolvedValue({
+      repository.updateConHistorialPrecio.mockResolvedValue({
         id: 1,
         denominacion: 'coca gaseosas pack x6 de 500ml',
       });
@@ -230,13 +237,13 @@ describe('ProductoService', () => {
       await service.update(1, dto);
 
       expect(dto.denominacion).toBe('coca gaseosas pack x6 de 500ml');
-      expect(repository.update).toHaveBeenCalled();
+      expect(repository.updateConHistorialPrecio).toHaveBeenCalled();
     });
 
     it('debería conservar la denominación existente si viene ausente', async () => {
       repository.findOne.mockResolvedValue(buildProducto());
       setupEntidades();
-      repository.update.mockResolvedValue({ id: 1, denominacion: 'nombre existente' });
+      repository.updateConHistorialPrecio.mockResolvedValue({ id: 1, denominacion: 'nombre existente' });
 
       const dto: UpdateProductoDto = {
         usuarioUpdatedId: 1,
@@ -251,7 +258,7 @@ describe('ProductoService', () => {
     it('debería validar unicidad si viene una nueva denominación', async () => {
       repository.findOne.mockResolvedValue(buildProducto());
       setupEntidades();
-      repository.update.mockResolvedValue({ id: 1, denominacion: 'nueva denom' });
+      repository.updateConHistorialPrecio.mockResolvedValue({ id: 1, denominacion: 'nueva denom' });
 
       const dto: UpdateProductoDto = {
         denominacion: 'Nueva denom',
@@ -271,7 +278,16 @@ describe('ProductoService', () => {
     });
 
     it('debería lanzar InternalServerErrorException si el producto no tiene línea/marca', async () => {
-      repository.findOne.mockResolvedValue({ id: 1, lineaId: null, marcaId: null });
+      // precio/costo válidos para que la regla CR-007 de "precio > 0" no
+      // se dispare antes que la validación de línea/marca que se quiere probar.
+      repository.findOne.mockResolvedValue({
+        id: 1,
+        lineaId: null,
+        marcaId: null,
+        costo: 100,
+        precio: 100,
+        porcentaje: 0,
+      });
 
       await expect(
         service.update(1, { usuarioUpdatedId: 1 } as UpdateProductoDto),
@@ -313,19 +329,21 @@ describe('ProductoService', () => {
         { id: 1, precio: 100, usuarioUpdated: null },
         { id: 2, precio: 200, usuarioUpdated: null },
       ] as any);
-      repository.saveMasivos.mockResolvedValue(undefined);
+      repository.saveMasivosConHistorial.mockResolvedValue(undefined);
 
       const result = await service.actualizarPreciosMasivos({
         tipo: 'PORCENTAJE',
         valor: 10,
         usuarioId: 7,
+        motivo: 'Aumento de lista',
       } as any);
 
       expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: undefined });
-      expect(repository.saveMasivos).toHaveBeenCalledWith([
-        expect.objectContaining({ id: 1, precio: 110 }),
-        expect.objectContaining({ id: 2, precio: 220 }),
-      ]);
+      expect(repository.saveMasivosConHistorial).toHaveBeenCalledWith(
+        [expect.objectContaining({ id: 1, precio: 110 }), expect.objectContaining({ id: 2, precio: 220 })],
+        { id: 7 },
+        'Aumento de lista',
+      );
       expect(result.mensaje).toContain('precios masivos');
     });
 
@@ -334,19 +352,22 @@ describe('ProductoService', () => {
       repository.findAllByFilters.mockResolvedValue([
         { id: 3, precio: 50, usuarioUpdated: null },
       ] as any);
-      repository.saveMasivos.mockResolvedValue(undefined);
+      repository.saveMasivosConHistorial.mockResolvedValue(undefined);
 
       await service.actualizarPreciosMasivos({
         tipo: 'MONTO',
         valor: 15,
         lineaId: 9,
         usuarioId: 7,
+        motivo: 'Descuento proveedor',
       } as any);
 
       expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: 9 });
-      expect(repository.saveMasivos).toHaveBeenCalledWith([
-        expect.objectContaining({ id: 3, precio: 65 }),
-      ]);
+      expect(repository.saveMasivosConHistorial).toHaveBeenCalledWith(
+        [expect.objectContaining({ id: 3, precio: 65 })],
+        { id: 7 },
+        'Descuento proveedor',
+      );
     });
   });
 

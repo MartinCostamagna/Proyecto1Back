@@ -31,21 +31,27 @@ import { UsuarioValidator } from 'src/modules/common/utils/validation/usuario-va
 import { ProductoDeletePolicy } from '../policies/producto-delete.policy';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { HistorialPrecio } from '../../domain/entities/historial-precio.entity';
 
 import { generarDenominacionProducto } from '../../utils/producto.util';
+import { HistorialPrecioDto } from '../../dto/historial-precio.dto';
+import { SearchHistorialPrecioDto } from '../../dto/search-historial-precio.dto';
 import {
   ActualizarPreciosMasivosDto,
   TipoActualizacionPrecio,
 } from '../../dto/actualizar-precios-masivos.dto';
+/**
+ * CR-007: tolerancia para detectar un cambio real de precio.
+ * Es menor que la escala mínima representable en la columna `precio`
+ * (decimal(15,5)), así que cualquier cambio verdadeiro sigue detectándose.
+ */
+const PRECIO_TOLERANCIA = 0.00001;
+
 @Injectable()
 export class ProductoService {
   private readonly logger = new Logger(ProductoService.name);
   constructor(
     @Inject('IProductoRepository')
     private readonly repository: IProductoRepository,
-    @InjectRepository(HistorialPrecio)
-    private readonly historialPrecioRepository: Repository<HistorialPrecio>,
     private readonly lineaService: LineaService,
     
 
@@ -117,19 +123,24 @@ export class ProductoService {
     }
 
     //  CR-007: Generar el historial si se detecta que el precio varió
-    if (precioAnterior !== precioNuevo) {
+    let cambioPrecio: { precioAnterior: number; precioNuevo: number; motivo: string } | null = null;
+
+    // La comparación usa una tolerancia porque `costo + costo * (margen / 100)`
+    // arrastra error de coma flotante (ej: 3 + 3 * 0.1 = 3.3000000000000003).
+    // Sin la tolerancia se generaban registros de historial "fantasma" y se
+    // exigía un motivo sobre un precio que en realidad no había cambiado.
+    const huboCambioDePrecio = Math.abs(precioAnterior - precioNuevo) > PRECIO_TOLERANCIA;
+
+    if (huboCambioDePrecio) {
       if (!dto.motivo || dto.motivo.trim() === '') {
         throw new BadRequestException('Debe especificar un motivo obligatorio para el cambio de precio.');
       }
 
-      const historial = this.historialPrecioRepository.create({
-        precioAnterior: precioAnterior,
-        precioNuevo: precioNuevo,
-        motivo: dto.motivo,
-        producto: productoActual,
-      });
-      
-      await this.historialPrecioRepository.save(historial);
+      cambioPrecio = {
+        precioAnterior,
+        precioNuevo,
+        motivo: dto.motivo.trim(),
+      };
     }
 
     // Aseguramos que el DTO lleve el precio definitivo y validado a la capa de persistencia
@@ -138,13 +149,16 @@ export class ProductoService {
     const { marca, linea, presentacion, usuario } =
       await this.validarYPrepararActualizacion(id, dto);
 
-    const entity = await this.repository.update(
+    // CR-007: el producto y su historial se guardan en la misma transaccion,
+    // asi un fallo del historial no deja el producto a medio actualizar.
+    const entity = await this.repository.updateConHistorialPrecio(
       id,
       dto,
       linea,
       marca,
       usuario,
       presentacion ?? null,
+      cambioPrecio,
     );
 
     return MessageFrontUtils.createSimple(
@@ -155,7 +169,7 @@ export class ProductoService {
   }
 
   async actualizarPreciosMasivos(dto: ActualizarPreciosMasivosDto) {
-    const { tipo, valor, lineaId, usuarioId } = dto;
+    const { tipo, valor, lineaId, usuarioId, motivo } = dto;
 
     if (!Object.values(TipoActualizacionPrecio).includes(tipo)) {
       throw new InternalServerErrorException('Tipo de actualización inválido');
@@ -164,6 +178,13 @@ export class ProductoService {
     const usuario = await this.usuarioService.findOne(usuarioId);
     if (!usuario) {
       throw new NotFoundException(`Usuario con ID ${usuarioId} no encontrado.`);
+    }
+
+    // CR-007: el motivo es obligatorio para todo cambio de precio.
+    if (!motivo || motivo.trim() === '') {
+      throw new BadRequestException(
+        'Debe especificar un motivo obligatorio para el cambio de precio.',
+      );
     }
 
     const productos = await this.repository.findAllByFilters({ lineaId });
@@ -182,14 +203,35 @@ export class ProductoService {
 
       producto.precio = Math.max(0, nuevoPrecio);
       producto.usuarioUpdated = usuario;
+
+      // CR-007: solo se registra historial si el precio cambio realmente.
+      if (Math.max(0, nuevoPrecio) !== precioActual) {
+        producto.precioHistorialRegistrado = precioActual;
+      }
+
       return producto;
     });
 
-    await this.repository.saveMasivos(productosActualizados);
+    // CR-007: guardado + historial en la misma transaccion.
+    await this.repository.saveMasivosConHistorial(
+      productosActualizados,
+      usuario,
+      motivo.trim(),
+    );
 
     return MessageFrontUtils.createActualizacionPrecioMasiva(
       lineaId ? `línea ${lineaId}` : 'global',
     );
+  }
+
+  // ==================================================================
+  //  CR-007: CONSULTA DEL HISTORIAL DE PRECIOS
+  // ==================================================================
+
+  async findHistorialBy(
+    filtros: SearchHistorialPrecioDto,
+  ): Promise<{ data: HistorialPrecioDto[]; total: number }> {
+    return this.repository.findHistorialBy(filtros);
   }
 
   async findByRapido(

@@ -165,12 +165,6 @@ export class Producto {
   presentacionId?: number | null;
 
 
-  @Column({ default: false })
-  utilizaPack: boolean;
-
-  @Column({ type: 'int', nullable: true })
-  cantidadPorPack: number | null;
-
   @Column({ type: 'text', nullable: true })
   imagen?: string;
 
@@ -191,6 +185,13 @@ export class Producto {
   // ========== HISTORIAL DE PRECIOS (CR-007) ==========
   @OneToMany(() => HistorialPrecio, (historial) => historial.producto, { cascade: true })
   historialPrecios: HistorialPrecio[];
+
+  /**
+   * Campo transitorio (NO se persiste, no lleva decorador de columna).
+   * Solo lo usa el cambio masivo de precios para pasarle al generador del
+   * historial el precio que tenia el producto antes del ajuste.
+   */
+  precioHistorialRegistrado?: number;
 
   //CR-001: VALIDACIONES DEL DOMINIO
   @BeforeInsert()
@@ -222,13 +223,5 @@ export class Producto {
     if (this.stockMinimo !== undefined && this.stockMinimo !== null && this.stockMinimo < 0) {
       throw new BadRequestException('El stock mínimo no puede ser un valor negativo.');
     }
-
-    // 3. Validar cantidad por pack
-    if (this.utilizaPack && (this.cantidadPorPack === null || this.cantidadPorPack === undefined || this.cantidadPorPack < 1)) {
-      throw new BadRequestException('Si el producto utiliza pack, la cantidad por pack debe ser de al menos 1.');
-    }
-
-    //4. Validar margen de ganancia
-    
   }
 }

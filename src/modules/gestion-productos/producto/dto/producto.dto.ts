@@ -142,15 +142,6 @@ export class ProductoDto {
   @IsInt()
   stockMinimo: number;
 
-  @ApiProperty()
-  @IsBoolean()
-  @IsNotEmpty()
-  utilizaPack: boolean;
-
-  @ApiPropertyOptional()
-  @IsInt()
-  cantidadPorPack: number;
-
   @ApiProperty({ example: 123 })
   @Type(() => Number)
   @IsInt()
