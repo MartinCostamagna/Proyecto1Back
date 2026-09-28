@@ -1,0 +1,1198 @@
+(node:10432) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/provincia[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 401[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:46:32.965Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: UnauthorizedException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Token no encontrado[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mUnauthorizedException: Token no encontrado
+    at AuthGuard.canActivate (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\src\modules\gestion-usuario\auth\auth.guard.ts:40:13)
+    at GuardsConsumer.tryActivate (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\guards\guards-consumer.js:15:34)
+    at canActivateFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:135:59)
+    at C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:42:37
+    at C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:23
+    at Layer.handleRequest (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\router\index.js:435:11)
+    at Layer.handleRequest (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\router\lib\layer.js:152:17)[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "UnauthorizedException: Token no encontrado\n    at AuthGuard.canActivate (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\src\\modules\\gestion-usuario\\auth\\auth.guard.ts:40:13)\n    at GuardsConsumer.tryActivate (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\guards\\guards-consumer.js:15:34)\n    at canActivateFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:135:59)\n    at C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:42:37\n    at C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:23\n    at Layer.handleRequest (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\router\\lib\\layer.js:152:17)\n    at next (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\router\\lib\\route.js:157:13)\n    at Route.dispatch (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\router\\lib\\route.js:117:3)\n    at handle (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\router\\index.js:435:11)\n    at Layer.handleRequest (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\router\\lib\\layer.js:152:17)",
+  "response": {
+    "message": "Token no encontrado"
+  },
+  "status": 401,
+  "options": {},
+  "message": "Token no encontrado",
+  "name": "UnauthorizedException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Token no encontrado",
+  "error": "Unauthorized",
+  "statusCode": 401
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Token no encontrado",
+  "error": "Unauthorized",
+  "statusCode": 401
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:32 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/auth/login[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: POST[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:46:33.544Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "La contraseña debe tener entre 6 y 20 caracteres.",
+      "empresaId must be a number conforming to the specified constraints",
+      "El id de la empresa no puede estar vacío."
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "La contraseña debe tener entre 6 y 20 caracteres.",
+    "empresaId must be a number conforming to the specified constraints",
+    "El id de la empresa no puede estar vacío."
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "La contraseña debe tener entre 6 y 20 caracteres.",
+    "empresaId must be a number conforming to the specified constraints",
+    "El id de la empresa no puede estar vacío."
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:46:33 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/auth/login[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: POST[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 401[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:47:09.741Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: UnauthorizedException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Contraseña incorrecta[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mUnauthorizedException: Contraseña incorrecta
+    at AuthService.login (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\src\modules\gestion-usuario\auth\application\services\auth.service.ts:59:13)
+    at async AuthController.login (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\src\modules\gestion-usuario\auth\application\controllers\auth.controller.ts:23:23)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "UnauthorizedException: Contraseña incorrecta\n    at AuthService.login (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\src\\modules\\gestion-usuario\\auth\\application\\services\\auth.service.ts:59:13)\n    at async AuthController.login (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\src\\modules\\gestion-usuario\\auth\\application\\controllers\\auth.controller.ts:23:23)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": "Contraseña incorrecta"
+  },
+  "status": 401,
+  "options": {},
+  "message": "Contraseña incorrecta",
+  "name": "UnauthorizedException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Contraseña incorrecta",
+  "error": "Unauthorized",
+  "statusCode": 401
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Contraseña incorrecta",
+  "error": "Unauthorized",
+  "statusCode": 401
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:47:09 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:48:34.411Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:48:34.420Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:34 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-marcas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:48:52.634Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:48:52 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:53:38.825Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T00:53:38.834Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 09:53:38 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:15.367Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:15.376Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:15 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:18.717Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:18.727Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:18 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:20.638Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:20.648Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:20 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:27.721Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/find-all-for-superlineas/select[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T01:02:27.730Z[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:15:25
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:15:25\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "denominacion must be a string"
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "denominacion must be a string"
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 7116  - [39m27/09/2026, 10:02:27 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 24036  - [39m27/09/2026, 10:09:03 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use 0.0.0.0:3000[39m[38;5;3m +2ms[39m
+node:net:2328
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:2328:16)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+
+Node.js v24.21.0
+[31m[Nest] 11980  - [39m27/09/2026, 10:09:53 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use 0.0.0.0:3000[39m[38;5;3m +2ms[39m
+node:net:2328
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:2328:16)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+
+Node.js v24.21.0
+[31m[Nest] 24392  - [39m27/09/2026, 11:06:27 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use 0.0.0.0:3000[39m[38;5;3m +1ms[39m
+node:net:2328
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:2328:16)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+
+Node.js v24.21.0
+[31m[Nest] 13732  - [39m27/09/2026, 11:06:52 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use 0.0.0.0:3000[39m[38;5;3m +1ms[39m
+node:net:2328
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:2328:16)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+
+Node.js v24.21.0
+[31m[Nest] 17208  - [39m27/09/2026, 11:09:52 [31m  ERROR[39m [38;5;3m[NestApplication] [39m[31mError: listen EADDRINUSE: address already in use 0.0.0.0:3000[39m[38;5;3m +3ms[39m
+node:net:2328
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use 0.0.0.0:3000
+    at Server.setupListenHandle [as _listen2] (node:net:2328:16)
+    at listenInCluster (node:net:2437:12)
+    at node:net:2666:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+  code: 'EADDRINUSE',
+  errno: -4091,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 3000
+}
+
+Node.js v24.21.0
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/precios-masivos[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: POST[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T02:13:10.019Z[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Bad Request Exception[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Bad Request Exception
+    at ValidationPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:107:20)
+    at ValidationPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\validation.pipe.js:74:30)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Bad Request Exception\n    at ValidationPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:107:20)\n    at ValidationPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\validation.pipe.js:74:30)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": [
+      "El motivo del cambio de precio no puede tener solo espacios.",
+      "El motivo del cambio de precio es obligatorio."
+    ]
+  },
+  "status": 400,
+  "options": {},
+  "message": "Bad Request Exception",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "El motivo del cambio de precio no puede tener solo espacios.",
+    "El motivo del cambio de precio es obligatorio."
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": [
+    "El motivo del cambio de precio no puede tener solo espacios.",
+    "El motivo del cambio de precio es obligatorio."
+  ],
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:10 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/rol/undefined[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T02:13:57.256Z[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Validation failed (numeric string is expected)[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Validation failed (numeric string is expected)
+    at ParseIntPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\parse-int.pipe.js:24:27)
+    at ParseIntPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\parse-int.pipe.js:38:24)
+    at C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:16:33
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Validation failed (numeric string is expected)\n    at ParseIntPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\parse-int.pipe.js:24:27)\n    at ParseIntPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\parse-int.pipe.js:38:24)\n    at C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:16:33\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": "Validation failed (numeric string is expected)"
+  },
+  "status": 400,
+  "options": {},
+  "message": "Validation failed (numeric string is expected)",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Validation failed (numeric string is expected)",
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Validation failed (numeric string is expected)",
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/rol/undefined[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: GET[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 400[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T02:13:57.269Z[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: BadRequestException[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: Validation failed (numeric string is expected)[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mBadRequestException: Validation failed (numeric string is expected)
+    at ParseIntPipe.exceptionFactory (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\parse-int.pipe.js:24:27)
+    at ParseIntPipe.transform (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\common\pipes\parse-int.pipe.js:38:24)
+    at C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\pipes\pipes-consumer.js:16:33
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async resolveParamValue (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:148:23)
+    at async Promise.all (index 0)
+    at async pipesFn (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:151:13)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:37:30
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "BadRequestException: Validation failed (numeric string is expected)\n    at ParseIntPipe.exceptionFactory (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\parse-int.pipe.js:24:27)\n    at ParseIntPipe.transform (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\common\\pipes\\parse-int.pipe.js:38:24)\n    at C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\pipes\\pipes-consumer.js:16:33\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async resolveParamValue (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:148:23)\n    at async Promise.all (index 0)\n    at async pipesFn (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:151:13)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:37:30\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": "Validation failed (numeric string is expected)"
+  },
+  "status": 400,
+  "options": {},
+  "message": "Validation failed (numeric string is expected)",
+  "name": "BadRequestException"
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Validation failed (numeric string is expected)",
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "Validation failed (numeric string is expected)",
+  "error": "Bad Request",
+  "statusCode": 400
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:13:57 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🚨 ERROR CAPTURADO POR GLOBAL EXCEPTION FILTER 🚨[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 URL: /api/producto/precios-masivos[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Method: POST[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Status Code: 404[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📍 Timestamp: 2026-09-28T02:17:40.783Z[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Tipo de Excepción: NotFoundException[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔴 Mensaje: No se encontraron productos para el filtro superlínea 2.[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📚 STACK TRACE COMPLETO:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31mNotFoundException: No se encontraron productos para el filtro superlínea 2.
+    at ProductoService.actualizarPreciosMasivos (C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\src\modules\gestion-productos\producto\application\services\producto.service.ts:209:13)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-execution-context.js:46:28
+    at async C:\Users\Admin\OneDrive\Escritorio\VSCode\ProgAvanzada\Proyecto1Back\node_modules\@nestjs\core\router\router-proxy.js:9:17[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📋 DETALLES COMPLETOS DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "stack": "NotFoundException: No se encontraron productos para el filtro superlínea 2.\n    at ProductoService.actualizarPreciosMasivos (C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\src\\modules\\gestion-productos\\producto\\application\\services\\producto.service.ts:209:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-execution-context.js:46:28\n    at async C:\\Users\\Admin\\OneDrive\\Escritorio\\VSCode\\ProgAvanzada\\Proyecto1Back\\node_modules\\@nestjs\\core\\router\\router-proxy.js:9:17",
+  "response": {
+    "message": "No se encontraron productos para el filtro superlínea 2."
+  },
+  "status": 404,
+  "options": {},
+  "message": "No se encontraron productos para el filtro superlínea 2.",
+  "name": "NotFoundException"
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m📨 RESPONSE DEL ERROR:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "No se encontraron productos para el filtro superlínea 2.",
+  "error": "Not Found",
+  "statusCode": 404
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m🔍 HTTP EXCEPTION RESPONSE:[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m{
+  "message": "No se encontraron productos para el filtro superlínea 2.",
+  "error": "Not Found",
+  "statusCode": 404
+}[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m───────────────────────────────────────────────────────[39m
+[31m[Nest] 17508  - [39m27/09/2026, 11:17:40 [31m  ERROR[39m [38;5;3m[GlobalExceptionFilter] [39m[31m═══════════════════════════════════════════════════════[39m
+error Command failed with exit code 1.
