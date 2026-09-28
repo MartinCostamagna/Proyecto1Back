@@ -115,7 +115,7 @@ export class ProveedorRepository implements IProveedorRepository {
     return entity;
   }
 
-  async findAllFor(denominacion: string): Promise<Proveedor[]> {
+  async findAllFor(denominacion?: string): Promise<Proveedor[]> {
     return this.persistenceService.findAllFor(denominacion);
   }
 

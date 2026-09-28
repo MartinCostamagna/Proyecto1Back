@@ -30,7 +30,7 @@ export class MarcaRepository implements IMarcaRepository {
     return this.persistenceService.update(id, data);
   }
 
-  async findAllFor(denominacion: string): Promise<Marca[]> {
+  async findAllFor(denominacion?: string): Promise<Marca[]> {
     return this.persistenceService.findAllFor(denominacion);
   }
 

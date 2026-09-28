@@ -92,15 +92,23 @@ export class SuperlineaPersistenceAdapter
     }
   }
 
-  async findAllFor(denominacion: string): Promise<Superlinea[]> {
+  async findAllFor(denominacion?: string): Promise<Superlinea[]> {
     try {
-      const query = this.baseQuery().andWhere(
-        `UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`,
-        {
-          denominacion: `%${denominacion.toUpperCase()}%`,
-        },
-      );
+      // Sin denominación el catálogo se devuelve completo, que es lo que
+      // espera un selector. Antes se llamaba con `undefined` y reventaba en el
+      // `toUpperCase()`.
+      const busqueda = (denominacion ?? '').trim();
+
+      const query = this.baseQuery();
+
+      if (busqueda !== '') {
+        query.andWhere(`UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`, {
+          denominacion: `%${busqueda.toUpperCase()}%`,
+        });
+      }
+
       QueryBuilderHelper.applyOrder(query, this.ALIAS, 'denominacion', 'ASC');
+
       return await query.getMany();
     } catch (error) {
       handleDatabaseError(this.logger, 'findAllFor', error);

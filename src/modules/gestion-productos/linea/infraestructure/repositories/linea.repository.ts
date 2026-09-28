@@ -52,7 +52,7 @@ export class LineaRepository implements ILineaRepository {
     );
   }
 
-  async findAllFor(denominacion: string): Promise<Linea[]> {
+  async findAllFor(denominacion?: string): Promise<Linea[]> {
     this.logger.log(`Buscando 333o `);
     return this.persistenceService.findAllFor(denominacion);
   }

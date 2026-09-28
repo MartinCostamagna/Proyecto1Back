@@ -82,15 +82,23 @@ export class PersonalPersistenceAdapter
     }
   }
 
-  async findAllFor(denominacion: string): Promise<Personal[]> {
+  async findAllFor(denominacion?: string): Promise<Personal[]> {
     try {
       const query = this.repository
         .createQueryBuilder('personal')
         .where('personal.deletedAt IS NULL');
 
-      query.andWhere('UPPER(personal.denominacion) LIKE :denominacion', {
-        denominacion: `%${denominacion}%`,
-      });
+      // Sin denominación el catálogo se devuelve completo, que es lo que
+      // espera un selector.
+      const busqueda = (denominacion ?? '').trim();
+
+      if (busqueda !== '') {
+        // El término también se uppercasa: si solo se normaliza la columna, la
+        // comparación sigue siendo sensible a mayúsculas.
+        query.andWhere('UPPER(personal.denominacion) LIKE :denominacion', {
+          denominacion: `%${busqueda.toUpperCase()}%`,
+        });
+      }
 
       return await query.orderBy('personal.denominacion', 'ASC').getMany();
     } catch (error) {
@@ -177,7 +185,7 @@ export class PersonalPersistenceAdapter
     } catch (error) {
 
       throw new DatabaseConnectionException(
-        `Error al conectar con la base de datos.1 } `,
+        'Error al conectar con la base de datos.',
       );
     }
   }

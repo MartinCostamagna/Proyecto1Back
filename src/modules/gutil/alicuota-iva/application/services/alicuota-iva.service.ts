@@ -57,7 +57,7 @@ export class AlicuotaIvaService {
   }
 
   async findAllFor(
-    denominacion: string,
+    denominacion?: string,
   ): Promise<{ data: AlicuotaIvaDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
     const data: AlicuotaIvaDto[] = result.map((alicuota) =>

@@ -60,9 +60,7 @@ export class MarcaService {
     );
   }
 
-  async findAllFor(
-    denominacion: string,
-  ): Promise<{ data: MarcaDto[]; total: number }> {
+  async findAllFor(denominacion?: string): Promise<{ data: MarcaDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
     const data: MarcaDto[] = result.map((marca) => MarcaMapper.toDto(marca));
     return {

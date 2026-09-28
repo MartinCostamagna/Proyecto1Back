@@ -31,7 +31,7 @@ export class AlicuotaIvaRepository implements IAlicuotaIvaRepository {
     return this.persistenceService.update(id, data);
   }
 
-  async findAllFor(denominacion: string): Promise<AlicuotaIva[]> {
+  async findAllFor(denominacion?: string): Promise<AlicuotaIva[]> {
     return this.persistenceService.findAllFor(denominacion);
   }
 

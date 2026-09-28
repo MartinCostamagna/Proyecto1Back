@@ -24,11 +24,27 @@ export class ActualizarPreciosMasivosDto {
 
     @ApiPropertyOptional({
         example: 5,
-        description: 'ID de la línea sobre la cual aplicar el ajuste. Si no se envía, se aplica a todos los productos.',
+        description: 'ID de la línea sobre la cual aplicar el ajuste. Se puede combinar con marcaId y superlineaId; los filtros enviados se aplican en conjunto.',
     })
     @IsOptional()
     @IsNumber()
     lineaId?: number;
+
+    @ApiPropertyOptional({
+        example: 3,
+        description: 'ID de la marca sobre la cual aplicar el ajuste. Se puede combinar con lineaId y superlineaId.',
+    })
+    @IsOptional()
+    @IsNumber()
+    marcaId?: number;
+
+    @ApiPropertyOptional({
+        example: 2,
+        description: 'ID de la superlínea sobre la cual aplicar el ajuste. Se alcanza a través de la línea de cada producto.',
+    })
+    @IsOptional()
+    @IsNumber()
+    superlineaId?: number;
 
     @ApiProperty({
         example: 7,

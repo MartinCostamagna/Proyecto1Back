@@ -60,9 +60,7 @@ export class SuperlineaService {
     );
   }
 
-  async findAllFor(
-    denominacion: string,
-  ): Promise<{ data: SuperlineaDto[]; total: number }> {
+  async findAllFor(denominacion?: string): Promise<{ data: SuperlineaDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
     const data: SuperlineaDto[] = result.map((superlinea) =>
       SuperlineaMapper.toDto(superlinea),

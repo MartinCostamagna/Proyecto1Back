@@ -418,13 +418,47 @@ export class ProductoPersistenceAdapter implements IProductoRepository {
 
   }
 
-  async findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]> {
+  /**
+   * Selecciona los productos destino de un cambio masivo de precios.
+   *
+   * El alcance se define por los filtros enviados y se combinan entre sí
+   * (AND). La superlínea no tiene columna propia en `producto`, así que se
+   * alcanza por la relación `producto -> linea -> superlinea`, igual que en
+   * `findBy`. Se filtra sobre las claves foráneas (`linea_id`, `marca_id`) y
+   * no sobre las columnas duplicadas en camelCase, que no tienen índice ni
+   * se mantienen sincronizadas.
+   */
+  async findAllByFilters(filters: {
+    lineaId?: number;
+    marcaId?: number;
+    superlineaId?: number;
+    excluirSistema?: boolean;
+  }): Promise<Producto[]> {
     const query = this.repository
       .createQueryBuilder('producto')
+      .leftJoinAndSelect('producto.marca', 'marca')
+      .leftJoinAndSelect('producto.linea', 'linea')
+      .leftJoinAndSelect('linea.superlinea', 'superlinea')
       .where('producto.deletedAt IS NULL');
 
+    if (filters.marcaId !== undefined && filters.marcaId !== null) {
+      query.andWhere('producto.marca_id = :marcaId', { marcaId: filters.marcaId });
+    }
+
     if (filters.lineaId !== undefined && filters.lineaId !== null) {
-      query.andWhere('producto.lineaId = :lineaId', { lineaId: filters.lineaId });
+      query.andWhere('producto.linea_id = :lineaId', { lineaId: filters.lineaId });
+    }
+
+    if (filters.superlineaId !== undefined && filters.superlineaId !== null) {
+      query.andWhere('superlinea.id = :superlineaId', {
+        superlineaId: filters.superlineaId,
+      });
+    }
+
+    // Los productos de sistema no admiten edición de costo ni de margen en la
+    // ficha, así que el cambio global de precios tampoco debe alcanzarlos.
+    if (filters.excluirSistema) {
+      query.andWhere('producto.sistema = 0');
     }
 
     return query.getMany();

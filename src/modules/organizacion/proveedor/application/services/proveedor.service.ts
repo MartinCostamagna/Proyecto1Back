@@ -289,7 +289,7 @@ export class ProveedorService {
 
 
   async findAllFor(
-    denominacion: string,
+    denominacion?: string,
   ): Promise<{ data: GetProveedorDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
     const data: GetProveedorDto[] = result.map((proveedor) =>

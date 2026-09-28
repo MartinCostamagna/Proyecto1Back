@@ -332,16 +332,23 @@ export class ProveedorPersistenceAdapter implements IProveedorRepository {
     }
   }
 
-  async findAllFor(denominacion: string): Promise<Proveedor[]> {
+  async findAllFor(denominacion?: string): Promise<Proveedor[]> {
     try {
-      return await this.repository
+      // Sin denominación el catálogo se devuelve completo, que es lo que
+      // espera un selector.
+      const busqueda = (denominacion ?? '').trim();
+
+      const query = this.repository
         .createQueryBuilder('proveedor')
-        .where('proveedor.deletedAt IS NULL')
-        .andWhere('UPPER(proveedor.denominacion) LIKE :denominacion', {
-          denominacion: `%${denominacion.toUpperCase()}%`,
-        })
-        .orderBy('proveedor.denominacion', 'ASC')
-        .getMany();
+        .where('proveedor.deletedAt IS NULL');
+
+      if (busqueda !== '') {
+        query.andWhere('UPPER(proveedor.denominacion) LIKE :denominacion', {
+          denominacion: `%${busqueda.toUpperCase()}%`,
+        });
+      }
+
+      return await query.orderBy('proveedor.denominacion', 'ASC').getMany();
     } catch (error) {
       throw new DatabaseConnectionException(
         'Error al conectar con la base de datos.',

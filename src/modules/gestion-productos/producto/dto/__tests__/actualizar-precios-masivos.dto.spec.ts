@@ -89,15 +89,41 @@ describe('ActualizarPreciosMasivosDto — CR-007', () => {
       );
     });
 
-    it('debería permitir línea opcional (aplica a todos los productos)', async () => {
-      await DtoValidatorHelper.expectValidDto(ActualizarPreciosMasivosDto, base);
-    });
-
-    it('debería permitir una línea específica', async () => {
+    it('debería permitir línea, marca y superlínea como filtros de alcance', async () => {
       await DtoValidatorHelper.expectValidDto(ActualizarPreciosMasivosDto, {
         ...base,
         lineaId: 3,
       });
+      await DtoValidatorHelper.expectValidDto(ActualizarPreciosMasivosDto, {
+        ...base,
+        marcaId: 4,
+      });
+      await DtoValidatorHelper.expectValidDto(ActualizarPreciosMasivosDto, {
+        ...base,
+        superlineaId: 2,
+      });
+    });
+
+    it('debería permitir los tres filtros de alcance combinados', async () => {
+      await DtoValidatorHelper.expectValidDto(ActualizarPreciosMasivosDto, {
+        ...base,
+        marcaId: 4,
+        lineaId: 3,
+        superlineaId: 2,
+      });
+    });
+
+    it('debería rechazar un filtro de alcance no numérico', async () => {
+      await DtoValidatorHelper.expectFieldError(
+        ActualizarPreciosMasivosDto,
+        { ...base, marcaId: 'coca' },
+        'marcaId',
+      );
+      await DtoValidatorHelper.expectFieldError(
+        ActualizarPreciosMasivosDto,
+        { ...base, superlineaId: 'alimentos' },
+        'superlineaId',
+      );
     });
 
     it('debería permitir un valor negativo en MONTO (descuentos)', async () => {

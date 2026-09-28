@@ -14,7 +14,7 @@ export interface IPersonalRepository {
     take: number,
     incluirEliminados: boolean,
   ): Promise<{ data: Personal[]; total: number }>;
-  findAllFor(denominacion: string): Promise<Personal[]>;
+  findAllFor(denominacion?: string): Promise<Personal[]>;
   findAllVendedorFor(denominacion: string): Promise<Personal[]>;
   findAllListado(): Promise<Personal[]>;
   update(

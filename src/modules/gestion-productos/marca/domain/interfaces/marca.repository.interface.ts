@@ -6,7 +6,7 @@ import { AuditoriaDto } from 'src/modules/gestion-sistema/auditoria/dto/auditori
 
 export interface IMarcaRepository {
   create(data: CreateMarcaDto): Promise<Marca>;
-  findAllFor(denominacion: string): Promise<Marca[]>;
+  findAllFor(denominacion?: string): Promise<Marca[]>;
   findAllListado(): Promise<Marca[]>;
   findAllSinSistemaFor(denominacion: string): Promise<Marca[]>;
   findAllSistemaFor(denominacion: string): Promise<Marca[]>;

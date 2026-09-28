@@ -6,7 +6,7 @@ import { Usuario } from 'src/modules/gestion-usuario/usuario/domain/entities/usu
 
 export interface IAlicuotaIvaRepository {
   create(data: CreateAlicuotaIvaDto): Promise<AlicuotaIva>;
-  findAllFor(denominacion: string): Promise<AlicuotaIva[]>;
+  findAllFor(denominacion?: string): Promise<AlicuotaIva[]>;
   findAllListado(): Promise<AlicuotaIva[]>;
   findAllSinSistemaFor(denominacion: string): Promise<AlicuotaIva[]>;
   findAllSistemaFor(denominacion: string): Promise<AlicuotaIva[]>;

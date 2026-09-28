@@ -169,7 +169,8 @@ export class ProductoService {
   }
 
   async actualizarPreciosMasivos(dto: ActualizarPreciosMasivosDto) {
-    const { tipo, valor, lineaId, usuarioId, motivo } = dto;
+    const { tipo, valor, lineaId, marcaId, superlineaId, usuarioId, motivo } =
+      dto;
 
     if (!Object.values(TipoActualizacionPrecio).includes(tipo)) {
       throw new InternalServerErrorException('Tipo de actualización inválido');
@@ -187,7 +188,30 @@ export class ProductoService {
       );
     }
 
-    const productos = await this.repository.findAllByFilters({ lineaId });
+    // Sin marca, línea ni superlínea el ajuste alcanza a todo el catálogo: es
+    // un cambio de negocio válido, pero excluye los productos de sistema para
+    // no tocar los que la ficha tampoco deja modificar.
+    const alcance: string[] = [];
+    if (marcaId) alcance.push(`marca ${marcaId}`);
+    if (lineaId) alcance.push(`línea ${lineaId}`);
+    if (superlineaId) alcance.push(`superlínea ${superlineaId}`);
+
+    const esCambioGlobal = alcance.length === 0;
+
+    const productos = await this.repository.findAllByFilters({
+      lineaId,
+      marcaId,
+      superlineaId,
+      excluirSistema: esCambioGlobal,
+    });
+
+    if (productos.length === 0) {
+      throw new NotFoundException(
+        esCambioGlobal
+          ? 'No se encontraron productos en el catálogo para actualizar.'
+          : `No se encontraron productos para el filtro ${alcance.join(', ')}.`,
+      );
+    }
 
     const productosActualizados = productos.map((producto) => {
       const precioActual = Number(producto.precio ?? 0);
@@ -220,7 +244,7 @@ export class ProductoService {
     );
 
     return MessageFrontUtils.createActualizacionPrecioMasiva(
-      lineaId ? `línea ${lineaId}` : 'global',
+      `${esCambioGlobal ? 'todo el catálogo' : alcance.join(', ')} (${productos.length} productos)`,
     );
   }
 
@@ -354,15 +378,15 @@ export class ProductoService {
   }
 
 
-  async findAllForLineas(denominacion: string) {
+  async findAllForLineas(denominacion?: string) {
     return this.lineaService.findAllFor(denominacion);
   }
 
-  async findAllForMarcas(denominacion: string) {
+  async findAllForMarcas(denominacion?: string) {
     return this.marcaService.findAllFor(denominacion);
   }
 
-  async findAllForSuperlineas(denominacion: string) {
+  async findAllForSuperlineas(denominacion?: string) {
     return this.superlineaService.findAllFor(denominacion);
   }
 

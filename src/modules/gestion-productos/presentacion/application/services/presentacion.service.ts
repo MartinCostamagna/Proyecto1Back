@@ -61,7 +61,7 @@ export class PresentacionService {
   }
 
   async findAllFor(
-    denominacion: string,
+    denominacion?: string,
   ): Promise<{ data: PresentacionDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
     const data: PresentacionDto[] = result.map((presentacion) =>

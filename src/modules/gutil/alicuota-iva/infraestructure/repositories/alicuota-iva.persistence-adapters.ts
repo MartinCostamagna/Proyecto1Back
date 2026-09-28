@@ -79,12 +79,21 @@ export class AlicuotaIvaPersistenceAdapter
    * Queries
    * ====================================================== */
 
-  async findAllFor(denominacion: string): Promise<AlicuotaIva[]> {
+  async findAllFor(denominacion?: string): Promise<AlicuotaIva[]> {
     try {
-      return await this.baseQuery()
-        .andWhere(`UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`, {
-          denominacion: `%${denominacion.toUpperCase()}%`,
-        })
+      // Sin denominación el catálogo se devuelve completo, que es lo que
+      // espera un selector.
+      const busqueda = (denominacion ?? '').trim();
+
+      const query = this.baseQuery();
+
+      if (busqueda !== '') {
+        query.andWhere(`UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`, {
+          denominacion: `%${busqueda.toUpperCase()}%`,
+        });
+      }
+
+      return await query
         .orderBy(`${this.ALIAS}.denominacion`, 'ASC')
         .getMany();
     } catch {

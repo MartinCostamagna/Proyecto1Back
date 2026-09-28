@@ -108,7 +108,7 @@ export class PersonalService {
   }
 
   async findAllFor(
-    denominacion: string,
+    denominacion?: string,
   ): Promise<{ data: PersonalDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
 

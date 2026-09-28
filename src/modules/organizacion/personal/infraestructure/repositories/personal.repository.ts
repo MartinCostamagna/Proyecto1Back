@@ -25,7 +25,7 @@ export class PersonalRepository implements IPersonalRepository {
         }
     }
 
-   async findAllFor(denominacion: string): Promise<Personal[]> {
+   async findAllFor(denominacion?: string): Promise<Personal[]> {
         return this.persistenceService.findAllFor(denominacion); 
     }
 

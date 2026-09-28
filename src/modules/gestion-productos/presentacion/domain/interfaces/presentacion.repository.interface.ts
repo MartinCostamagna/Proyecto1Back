@@ -16,7 +16,7 @@ export interface IPresentacionRepository {
 
   findAllListado(): Promise<Presentacion[]>;
 
-  findAllFor(denominacion: string): Promise<Presentacion[]>;
+  findAllFor(denominacion?: string): Promise<Presentacion[]>;
 
   findByIdConAuditoria(id: number): Promise<AuditoriaDto | null>;
 

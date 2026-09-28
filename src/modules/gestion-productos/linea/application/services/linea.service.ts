@@ -98,9 +98,7 @@ export class LineaService {
     };
   }
 
-  async findAllFor(
-    denominacion: string,
-  ): Promise<{ data: LineaDto[]; total: number }> {
+  async findAllFor(denominacion?: string): Promise<{ data: LineaDto[]; total: number }> {
     const result = await this.repository.findAllFor(denominacion);
 
     this.logger.log(

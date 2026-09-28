@@ -38,7 +38,7 @@ export class PresentacionRepository implements IPresentacionRepository {
     return this.persistenceService.findAllListado();
   }
 
-  async findAllFor(denominacion: string): Promise<Presentacion[]> {
+  async findAllFor(denominacion?: string): Promise<Presentacion[]> {
     return this.persistenceService.findAllFor(denominacion);
   }
 

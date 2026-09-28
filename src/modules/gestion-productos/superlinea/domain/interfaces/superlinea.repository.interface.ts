@@ -16,7 +16,7 @@ export interface ISuperlineaRepository {
 
   findAllListado(): Promise<Superlinea[]>;
 
-  findAllFor(denominacion: string): Promise<Superlinea[]>;
+  findAllFor(denominacion?: string): Promise<Superlinea[]>;
 
   findByIdConAuditoria(id: number): Promise<AuditoriaDto | null>;
 

@@ -205,6 +205,16 @@ describe('PresentacionService', () => {
       ]);
       expect(result.total).toBe(1);
     });
+
+    it('debería pedir el catálogo completo cuando no se envía denominación', async () => {
+      const entity = buildEntity({ denominacion: '500ml' });
+      repository.findAllFor.mockResolvedValue([entity]);
+
+      const result = await service.findAllFor();
+
+      expect(repository.findAllFor).toHaveBeenCalledWith(undefined);
+      expect(result.data).toHaveLength(1);
+    });
   });
 
   describe('findAllListado', () => {

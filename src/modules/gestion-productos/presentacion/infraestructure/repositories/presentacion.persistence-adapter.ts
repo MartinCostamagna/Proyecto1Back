@@ -92,14 +92,20 @@ export class PresentacionPersistenceAdapter
     }
   }
 
-  async findAllFor(denominacion: string): Promise<Presentacion[]> {
+  async findAllFor(denominacion?: string): Promise<Presentacion[]> {
     try {
-      const query = this.baseQuery().andWhere(
-        `UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`,
-        {
-          denominacion: `%${denominacion.toUpperCase()}%`,
-        },
-      );
+      // Sin denominación el catálogo se devuelve completo, que es lo que
+      // espera un selector.
+      const busqueda = (denominacion ?? '').trim();
+
+      const query = this.baseQuery();
+
+      if (busqueda !== '') {
+        query.andWhere(`UPPER(${this.ALIAS}.denominacion) LIKE :denominacion`, {
+          denominacion: `%${busqueda.toUpperCase()}%`,
+        });
+      }
+
       QueryBuilderHelper.applyOrder(query, this.ALIAS, 'denominacion', 'ASC');
       return await query.getMany();
     } catch (error) {

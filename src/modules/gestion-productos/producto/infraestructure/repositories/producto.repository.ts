@@ -145,7 +145,11 @@ export class ProductoRepository implements IProductoRepository {
     return this.persistenceService.actualizarPrecio(id, dto, usuario);
   }
 
-  async findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]> {
+  async findAllByFilters(filters: {
+    lineaId?: number;
+    marcaId?: number;
+    superlineaId?: number;
+  }): Promise<Producto[]> {
     return this.persistenceService.findAllByFilters(filters);
   }
 

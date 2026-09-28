@@ -7,7 +7,7 @@ import { AuditoriaDto } from 'src/modules/gestion-sistema/auditoria/dto/auditori
 export interface ILineaRepository {
 
   create(data: CreateLineaDto): Promise<Linea>;
-  findAllFor(denominacion: string): Promise<Linea[]>;
+  findAllFor(denominacion?: string): Promise<Linea[]>;
   findAllListado(): Promise<Linea[]>;
   findAllSinSistemaFor(denominacion: string): Promise<Linea[]>;
   findOne(id: number): Promise<Linea | null>;

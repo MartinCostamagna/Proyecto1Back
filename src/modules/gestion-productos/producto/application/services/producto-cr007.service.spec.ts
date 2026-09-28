@@ -398,6 +398,8 @@ describe('CR-007 — ProductoService (reglas de negocio del historial de precios
         valor: 10,
         usuarioId: 4,
         motivo: 'Aumento de lista',
+        // El alcance es opcional: sin filtro el ajuste alcanza a todo el catálogo.
+        lineaId: 1,
         ...over,
       }) as ActualizarPreciosMasivosDto;
 
@@ -406,6 +408,79 @@ describe('CR-007 — ProductoService (reglas de negocio del historial de precios
         service.actualizarPreciosMasivos(dtoMasivo({ motivo: '' })),
       ).rejects.toThrow('Debe especificar un motivo obligatorio para el cambio de precio.');
       expect(repository.saveMasivosConHistorial).not.toHaveBeenCalled();
+    });
+
+    it('debería aplicar a todo el catálogo cuando no viene ningún filtro de alcance', async () => {
+      repository.findAllByFilters.mockResolvedValue([
+        { id: 1, precio: 100 },
+        { id: 2, precio: 50 },
+      ] as any);
+      repository.saveMasivosConHistorial.mockResolvedValue([]);
+
+      const resultado = await service.actualizarPreciosMasivos(
+        dtoMasivo({ lineaId: undefined, marcaId: undefined, superlineaId: undefined }),
+      );
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith(
+        expect.objectContaining({ excluirSistema: true }),
+      );
+      expect(repository.saveMasivosConHistorial).toHaveBeenCalled();
+      expect(resultado.mensaje).toContain('todo el catálogo');
+    });
+
+    it('debería excluir los productos de sistema solo en el cambio global', async () => {
+      repository.findAllByFilters.mockResolvedValue([{ id: 1, precio: 100 }] as any);
+      repository.saveMasivosConHistorial.mockResolvedValue([]);
+
+      await service.actualizarPreciosMasivos(
+        dtoMasivo({ lineaId: undefined, marcaId: undefined, superlineaId: undefined }),
+      );
+      expect(repository.findAllByFilters).toHaveBeenCalledWith(
+        expect.objectContaining({ excluirSistema: true }),
+      );
+
+      await service.actualizarPreciosMasivos(dtoMasivo({ lineaId: 1 }));
+      expect(repository.findAllByFilters).toHaveBeenLastCalledWith(
+        expect.objectContaining({ excluirSistema: false }),
+      );
+    });
+
+    it('debería rechazar el cambio global cuando el catálogo está vacío', async () => {
+      repository.findAllByFilters.mockResolvedValue([]);
+
+      await expect(
+        service.actualizarPreciosMasivos(
+          dtoMasivo({ lineaId: undefined, marcaId: undefined, superlineaId: undefined }),
+        ),
+      ).rejects.toThrow('No se encontraron productos en el catálogo para actualizar.');
+      expect(repository.saveMasivosConHistorial).not.toHaveBeenCalled();
+    });
+
+    it('debería aceptar el alcance por marca o por superlínea', async () => {
+      repository.findAllByFilters.mockResolvedValue([{ id: 1, precio: 100 }] as any);
+      repository.saveMasivosConHistorial.mockResolvedValue([]);
+
+      await service.actualizarPreciosMasivos(
+        dtoMasivo({ lineaId: undefined, marcaId: 4, superlineaId: undefined }),
+      );
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({
+        lineaId: undefined,
+        marcaId: 4,
+        superlineaId: undefined,
+        excluirSistema: false,
+      });
+
+      await service.actualizarPreciosMasivos(
+        dtoMasivo({ lineaId: undefined, marcaId: undefined, superlineaId: 2 }),
+      );
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({
+        lineaId: undefined,
+        marcaId: undefined,
+        superlineaId: 2,
+        excluirSistema: false,
+      });
     });
 
     it('debería rechazar el cambio masivo con motivo de solo espacios', async () => {

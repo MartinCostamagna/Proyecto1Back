@@ -38,7 +38,7 @@ export class SuperlineaRepository implements ISuperlineaRepository {
     return this.persistenceService.findAllListado();
   }
 
-  async findAllFor(denominacion: string): Promise<Superlinea[]> {
+  async findAllFor(denominacion?: string): Promise<Superlinea[]> {
     return this.persistenceService.findAllFor(denominacion);
   }
 

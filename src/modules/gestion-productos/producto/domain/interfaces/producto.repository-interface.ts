@@ -65,7 +65,12 @@ export interface IProductoRepository {
     usuario: Usuario,
   ): Promise<void>;
 
-  findAllByFilters(filters: { lineaId?: number }): Promise<Producto[]>;
+  findAllByFilters(filters: {
+    lineaId?: number;
+    marcaId?: number;
+    superlineaId?: number;
+    excluirSistema?: boolean;
+  }): Promise<Producto[]>;
 
   saveMasivos(productos: Producto[]): Promise<Producto[]>;
 

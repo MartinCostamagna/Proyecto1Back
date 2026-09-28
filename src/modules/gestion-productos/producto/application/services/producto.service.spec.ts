@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { InternalServerErrorException, NotFoundException } from '@nestjs/common';
+import { BadRequestException, InternalServerErrorException, NotFoundException } from '@nestjs/common';
 import { ProductoService } from './producto.service';
 import { LineaService } from 'src/modules/gestion-productos/linea/application/services/linea.service';
 import { MarcaService } from 'src/modules/gestion-productos/marca/application/services/marca.service';
@@ -323,11 +323,10 @@ describe('ProductoService', () => {
   });
 
   describe('actualizacionMasivaPrecios', () => {
-    it('debería actualizar los precios de todos los productos por porcentaje cuando no hay línea', async () => {
+    it('debería aplicar a todo el catálogo si no se envía ningún filtro de alcance', async () => {
       usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
       repository.findAllByFilters.mockResolvedValue([
         { id: 1, precio: 100, usuarioUpdated: null },
-        { id: 2, precio: 200, usuarioUpdated: null },
       ] as any);
       repository.saveMasivosConHistorial.mockResolvedValue(undefined);
 
@@ -338,13 +337,41 @@ describe('ProductoService', () => {
         motivo: 'Aumento de lista',
       } as any);
 
-      expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: undefined });
+      expect(repository.findAllByFilters).toHaveBeenCalledWith(
+        expect.objectContaining({ excluirSistema: true }),
+      );
+      expect(repository.saveMasivosConHistorial).toHaveBeenCalled();
+      expect(result.mensaje).toContain('todo el catálogo');
+    });
+
+    it('debería actualizar por porcentaje solo los productos de la marca indicada', async () => {
+      usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
+      repository.findAllByFilters.mockResolvedValue([
+        { id: 1, precio: 100, usuarioUpdated: null },
+        { id: 2, precio: 200, usuarioUpdated: null },
+      ] as any);
+      repository.saveMasivosConHistorial.mockResolvedValue(undefined);
+
+      const result = await service.actualizarPreciosMasivos({
+        tipo: 'PORCENTAJE',
+        valor: 10,
+        marcaId: 4,
+        usuarioId: 7,
+        motivo: 'Aumento de lista',
+      } as any);
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({
+        lineaId: undefined,
+        marcaId: 4,
+        superlineaId: undefined,
+        excluirSistema: false,
+      });
       expect(repository.saveMasivosConHistorial).toHaveBeenCalledWith(
         [expect.objectContaining({ id: 1, precio: 110 }), expect.objectContaining({ id: 2, precio: 220 })],
         { id: 7 },
         'Aumento de lista',
       );
-      expect(result.mensaje).toContain('precios masivos');
+      expect(result.mensaje).toContain('marca 4');
     });
 
     it('debería aplicar un monto fijo solo a la línea indicada', async () => {
@@ -362,12 +389,59 @@ describe('ProductoService', () => {
         motivo: 'Descuento proveedor',
       } as any);
 
-      expect(repository.findAllByFilters).toHaveBeenCalledWith({ lineaId: 9 });
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({
+        lineaId: 9,
+        marcaId: undefined,
+        superlineaId: undefined,
+        excluirSistema: false,
+      });
       expect(repository.saveMasivosConHistorial).toHaveBeenCalledWith(
         [expect.objectContaining({ id: 3, precio: 65 })],
         { id: 7 },
         'Descuento proveedor',
       );
+    });
+
+    it('debería combinar los filtros de marca, línea y superlínea', async () => {
+      usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
+      repository.findAllByFilters.mockResolvedValue([
+        { id: 5, precio: 80, usuarioUpdated: null },
+      ] as any);
+      repository.saveMasivosConHistorial.mockResolvedValue(undefined);
+
+      await service.actualizarPreciosMasivos({
+        tipo: 'PORCENTAJE',
+        valor: 5,
+        marcaId: 4,
+        lineaId: 9,
+        superlineaId: 2,
+        usuarioId: 7,
+        motivo: 'Recosto',
+      } as any);
+
+      expect(repository.findAllByFilters).toHaveBeenCalledWith({
+        lineaId: 9,
+        marcaId: 4,
+        superlineaId: 2,
+        excluirSistema: false,
+      });
+    });
+
+    it('debería rechazar el cambio si el filtro no arroja ningún producto', async () => {
+      usuarioService.findOne.mockResolvedValue({ id: 7 } as any);
+      repository.findAllByFilters.mockResolvedValue([] as any);
+
+      await expect(
+        service.actualizarPreciosMasivos({
+          tipo: 'PORCENTAJE',
+          valor: 10,
+          superlineaId: 99,
+          usuarioId: 7,
+          motivo: 'Aumento de lista',
+        } as any),
+      ).rejects.toThrow(NotFoundException);
+
+      expect(repository.saveMasivosConHistorial).not.toHaveBeenCalled();
     });
   });
 

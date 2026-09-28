@@ -12,7 +12,7 @@ export interface IProveedorRepository {
     localidad: Localidad,
     usuario: Usuario,
   ): Promise<Proveedor>;
-  findAllFor(denominacion: string): Promise<Proveedor[]>;
+  findAllFor(denominacion?: string): Promise<Proveedor[]>;
   findAllSistemaFor(denominacion: string): Promise<Proveedor[]>;
 
   findAllByTipo(
